@@ -1,14 +1,22 @@
-import { Button } from "@/components/ui/button"
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
 
-// ... previous code remains the same
+//COLORS
+// blue "primary"
+// purple "secondary"
+//green and red "success" "error"
 const Header = () => {
   return (
-    <div className="flex justify-between">
-        <h1 className="p-4 m-4">Umusare</h1>
-        <div className="p-4 m-4">
-            <Button className="mx-2" variant="default">Sign In</Button>
-            <Button variant="outline">Register</Button>
-        </div>
+    <div className='flex justify-between m-4'>
+        <h1>Umusare</h1>
+        <Stack direction="row" spacing={2}>
+          <Button variant="contained" color="secondary">
+            Log In
+          </Button>
+          <Button variant="outlined" color="secondary">
+            Sign Up
+          </Button>
+        </Stack>
     </div>
   )
 }

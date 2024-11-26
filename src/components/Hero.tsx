@@ -1,10 +1,112 @@
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 const Hero = () => {
   return (
-    <div className="m-4 p-4">
-        <p>Umusare is a community-focused, online platform that connects individuals with their local community. It aims to provide a safe, supportive, and inclusive environment for people to share their experiences, ask questions, and connect with others.</p>
-    </div>
-  )
-}
+    <div className="m-4 p-4 flex justify-between flex-wrap
+    ">
+      <Card className="m-4" sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height=""
+          image="/profile1.png"
+          alt="profile image"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            John Doe
+          </Typography>
 
-export default Hero
+          <Typography variant="body1" color="text.secondary">
+            Umusare is a community-focused, online platform that connects
+            individuals with their local community.
+          </Typography>
+
+          <div className="mt-4">
+            <Button variant="contained" color="secondary">
+              Learn More...
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="m-4" sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height=""
+          image="/profile1.png"
+          alt="profile image"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            John Doe
+          </Typography>
+
+          <Typography variant="body1" color="text.secondary">
+            Umusare is a community-focused, online platform that connects
+            individuals with their local community.
+          </Typography>
+
+          <div className="mt-4">
+            <Button variant="contained" color="secondary">
+              Learn More...
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="m-4" sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height=""
+          image="/profile1.png"
+          alt="profile image"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            John Doe
+          </Typography>
+
+          <Typography variant="body1" color="text.secondary">
+            Umusare is a community-focused, online platform that connects
+            individuals with their local community.
+          </Typography>
+
+          <div className="mt-4">
+            <Button variant="contained" color="secondary">
+              Learn More...
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="m-4" sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height=""
+          image="/profile1.png"
+          alt="profile image"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            John Doe
+          </Typography>
+
+          <Typography variant="body1" color="text.secondary">
+            Umusare is a community-focused, online platform that connects
+            individuals with their local community.
+          </Typography>
+          <div className="mt-4">
+            <Button variant="contained" color="secondary">
+              Learn More...
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default Hero;
