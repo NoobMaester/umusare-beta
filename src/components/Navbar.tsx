@@ -24,7 +24,7 @@ const Navbar = () => {
             <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition duration-300">
               Contact
             </Link>
-          </div>
+          </div> 
 
           {/* Buttons */}
           <div className="flex items-center space-x-4">
