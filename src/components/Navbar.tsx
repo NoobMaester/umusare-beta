@@ -11,9 +11,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">  {/* Logo */}
+    <nav className="container bg-white top-0 z-10 py-2 w-full">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <Link to="/home" className="text-2xl font-bold text-blue-600">
               Umusaare

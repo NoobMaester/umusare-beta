@@ -2,7 +2,7 @@
 
 const HeroSection = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center text-white bg-cover bg-center mt-16" style={{ backgroundImage: "url('car.jpg')" }}>
+    <div className="relative h-screen flex items-center justify-center text-white bg-cover bg-center mt-4" style={{ backgroundImage: "url('car.jpg')" }}>
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 

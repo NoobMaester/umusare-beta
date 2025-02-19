@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* ... */
+.wrapper{
+  width: 100%;
+  margin: 2rem auto;
+}
 
 @layer base {
   :root {

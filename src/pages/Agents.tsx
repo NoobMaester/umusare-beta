@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchUsers } from "./../services/api";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
 
 interface User {
   id: number;
@@ -47,22 +52,31 @@ const UserList = () => {
   }
 
   return (
-    <div className="p-6 max-w-4xl mt-16">
+    <div className="container my-8">
       <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
         User List
       </h2>
-      <ul className="flex justify-center items-center flex-wrap gap-4">
+      <ul className="flex flex-wrap justify-center items-center gap-4">
         {users.map((user) => (
-          <li
-            key={user.id}
-            className="grid items-center p-4 bg-gray-100 rounded-lg"
-          >
-            <img src={user.picture.large} alt="profile" />
-            <p className="text-gray-900 font-bold py-4">
-              {user.name.first} {user.name.last}
-            </p>
-            <p className="text-gray-600 py-2">{user.email}</p>
-          </li>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image={user.picture.large}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {user.name.first} {user.name.last}
+                </Typography>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
         ))}
       </ul>
     </div>
