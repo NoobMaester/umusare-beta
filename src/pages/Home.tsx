@@ -2,12 +2,12 @@
 
 const HeroSection = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style={{ backgroundImage: "url('car.jpg')" }}>
+    <div className="relative h-screen flex items-center justify-center text-white bg-cover bg-center mt-16" style={{ backgroundImage: "url('car.jpg')" }}>
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center">
+      <div className="relative text-center">
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
           Welcome to Our Platform
         </h1>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Services: React.FC = () => {
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 mt-16">
             <h1 className="text-3xl font-bold mb-4">Our Services</h1>
             <p className="mb-6">Welcome to our services page. Here you can find a list of the services we offer.</p>
             <ul className="list-disc list-inside">
