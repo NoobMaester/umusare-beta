@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+
+import { useQuery } from "@tanstack/react-query";
 import { fetchUsers } from "./../services/api";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -19,37 +20,16 @@ interface User {
 }
 
 const UserList = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  
+  const {data, isLoading, error} = useQuery({
+    queryKey: ["users"],
+    queryFn: fetchUsers,
+  })
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const data = await fetchUsers();
-        setUsers(data.results);
-        console.log(data.results);
-      } catch (error) {
-        setError(
-          `Failed to fetch users: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }`
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+  const users = data?.results || [];
 
-    getUsers();
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  if (isLoading) {return <div>Loading...</div>;}
+  if (error) {return <div>Error: {(error as Error).message}</div>;}
 
   return (
     <div className="container my-8">
@@ -57,16 +37,16 @@ const UserList = () => {
         User List
       </h2>
       <ul className="flex flex-wrap justify-center items-center gap-4">
-        {users.map((user) => (
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-              <CardMedia
+        {users.map((user: User) => (
+              <Card key={user.email} sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia
                 component="img"
                 height="140"
                 image={user.picture.large}
                 alt="green iguana"
-              />
-              <CardContent>
+                />
+                <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {user.name.first} {user.name.last}
                 </Typography>
@@ -74,10 +54,10 @@ const UserList = () => {
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        ))}
+                </CardContent>
+              </CardActionArea>
+              </Card>
+            ))}
       </ul>
     </div>
   );
