@@ -6,6 +6,7 @@ import About from './pages/About';
 import Agents from './pages/Agents';
 import Services from './pages/Services';
 import Home from './pages/Home';
+import UserDetailPage from "./pages/Agent";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/agents" element={<Agents />} />
+          <Route path="/agents/:email" element={<UserDetailPage />} />
         </Routes>
       </Router>
       <Footer />

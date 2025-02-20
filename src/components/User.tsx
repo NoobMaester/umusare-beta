@@ -1,51 +1,61 @@
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchUsers } from "./../services/api";
+import { useParams } from 'react-router-dom';
+import { fetchUsersByEmail } from './../services/api';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import { Link } from "react-router-dom";
+import { useQuery } from '@tanstack/react-query';
+
 
 interface User {
-  id: number;
   name: {
     first: string;
     last: string;
   };
   email: string;
+  phone: string;
+  DOB: string;
   picture: {
     large: string;
   };
 }
 
-const UserList = () => {
-  
-  const {data, isLoading, error} = useQuery({
-    queryKey: ["users"],
-    queryFn: fetchUsers,
-  })
+const UserDetail = () => {
+  const { email } = useParams<{ email: string }>();
+   
+  const { data, isLoading, isError, error } = useQuery<User, Error>({
+    queryKey: ["user", email],
+    queryFn: () => {
+      if (!email) throw new Error("Email is required");
+      return fetchUsersByEmail(email);
+    },
+  });
 
-  const users = data?.results || [];
+  const user = data || null;
 
-  if (isLoading) {return <div className="text-center font-bold">Loading...</div>;}
-  if (error) {return <div className="text-center text-red-600">Error: {(error as Error).message}</div>;}
+  if (isLoading) {
+    return <div className='text-center font-bold'>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!user) {
+    return <div>User not found</div>;
+  }
 
   return (
-    <div className="container my-8">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
-        User List
-      </h2>
-      <ul className="flex flex-wrap justify-center items-center gap-4">
-        {users.map((user: User) => (
-          <Link to ={`/agents/${user.email}`} key={user.email}>
-              <Card sx={{ maxWidth: 345 }}>
+    <div className='container my-8'>
+      <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
                 component="img"
                 height="140"
-                image={user.picture.large}
+                image={user.picture.large
+                }
                 alt="green iguana"
                 />
                 <CardContent>
@@ -59,11 +69,8 @@ const UserList = () => {
                 </CardContent>
               </CardActionArea>
               </Card>
-              </Link>
-            ))}
-      </ul>
     </div>
   );
 };
 
-export default UserList;
+export default UserDetail;
