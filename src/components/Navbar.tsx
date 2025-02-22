@@ -1,50 +1,67 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
-  const location = useLocation();
+  // const location = useLocation();
 
-  const getLinkClassName = (path: string) => {
-    const baseClasses = "transition duration-300";
-    return location.pathname === path
-      ? `${baseClasses} text-blue-600 font-semibold`
-      : `${baseClasses} text-gray-700 hover:text-blue-600`;
-  };
+  // const getLinkClassName = (path: string) => {
+  //   const baseClasses = "transition duration-300";
+  //   return location.pathname === path
+  //     ? `${baseClasses} text-blue-600 font-semibold`
+  //     : `${baseClasses} text-gray-700 hover:text-blue-600`;
+  //};
 
   return (
-    <nav className="container bg-white top-0 z-10 py-2 w-full">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <Link to="/home" className="text-2xl font-bold text-blue-600">
-              Umusaare
-            </Link>
-          </div>
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-8 text-white">
+      <div>
+        <Link to="/" className="w-full text-3xl font-bold text-[#00df9a]">
+          Umusaare
+        </Link>
+      </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex space-x-8">
-            <Link to="/about" className={getLinkClassName("/about")}>
-              About
-            </Link>
-            <Link to="/services" className={getLinkClassName("/services")}>
-              Services
-            </Link>
-            <Link to="/agents" className={getLinkClassName("/agents")}>
-              Agents
-            </Link>
-          </div> 
+      {/* Navigation Links */}
+      <div className="flex hidden">
+        <Link to="/about" className="p-4">
+          About
+        </Link>
+        <Link to="/services" className="p-4">
+          Services
+        </Link>
+        <Link to="/agents" className="p-4">
+          Agents
+        </Link>
+      </div>
 
-          {/* Buttons */}
-          <div className="flex items-center space-x-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
-              Sign In
-            </button>
-            <button className="bg-transparent border border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 font-semibold py-2 px-4 rounded-lg transition duration-300">
-              Sign Up
-            </button>
-          </div>
+      {/* Buttons */}
+      <div className="flex items-center space-x-4 hidden">
+        <button className="bg-[#00df9a] hover:bg-[#00df9a] text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
+          Sign In
+        </button>
+        <button className="bg-transparent border border-[#00df9a] hover:bg-[#00df9a] hover:text-white text-[#00df9a] font-semibold py-2 px-4 rounded-lg transition duration-300">
+          Sign Up
+        </button>
+      </div>
+      <div>
+        <AiOutlineMenu className="text-3xl" />
+      </div>
+
+      <div className="fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300]">
+        <h1 className="w-full text-center text-3xl font-bold text-[#00df9a] m-4">
+          Umusaare
+        </h1>
+        <div className="flex flex-col items-center justify-center uppercase">
+          <Link to="/about" className="p-4 border-b border-gray-600">
+            About
+          </Link>
+          <Link to="/services" className="p-4 border-b border-gray-600">
+            Services
+          </Link>
+          <Link to="/agents" className="p-4">
+            Agents
+          </Link>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
