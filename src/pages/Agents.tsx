@@ -9,7 +9,9 @@ import CardActionArea from "@mui/material/CardActionArea";
 import { Link } from "react-router-dom";
 
 interface User {
-  id: number;
+  id: {
+    value:string;
+  };
   name: {
     first: string;
     last: string;
@@ -17,7 +19,7 @@ interface User {
   email: string;
   picture: {
     large: string;
-  };
+  }; 
 }
 
 const UserList = () => {
@@ -39,7 +41,7 @@ const UserList = () => {
       </h2>
       <ul className="flex flex-wrap justify-center items-center gap-4">
         {users.map((user: User) => (
-          <Link to ={`/agents/${user.email}`} key={user.email}>
+          <Link to ={`/agents/${user.id.value}`} key={user.id.value}>
               <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia

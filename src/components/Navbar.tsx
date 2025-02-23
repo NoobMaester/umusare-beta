@@ -33,7 +33,7 @@ const Navbar = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex items-center space-x-4 hidden">
+      <div className="flex items-center space-x-4">
         <button className="bg-[#00df9a] hover:bg-[#00df9a] text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
           Sign In
         </button>
@@ -45,7 +45,7 @@ const Navbar = () => {
         <AiOutlineMenu className="text-3xl" />
       </div>
 
-      <div className="fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300]">
+      <div className="fixed hidden left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300]">
         <h1 className="w-full text-center text-3xl font-bold text-[#00df9a] m-4">
           Umusaare
         </h1>
