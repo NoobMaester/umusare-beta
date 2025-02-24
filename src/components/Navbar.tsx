@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
   // const location = useLocation();
@@ -11,16 +12,22 @@ const Navbar = () => {
   //     : `${baseClasses} text-gray-700 hover:text-blue-600`;
   //};
 
+  const [navOpen, setNavOpen] = useState(false);
+  
+  const handleNav = () => {
+    setNavOpen(!navOpen);
+  }
+
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-8 text-white">
       <div>
         <Link to="/home" className="w-full text-3xl font-bold text-[#00df9a]">
-          Umusaare
+          Umusaare.
         </Link>
       </div>
 
       {/* Navigation Links */}
-      <div className="flex">
+      <div className="hidden md:flex uppercase">
         <Link to="/about" className="p-4">
           About
         </Link>
@@ -33,21 +40,14 @@ const Navbar = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex items-center space-x-4">
-        <button className="bg-[#00df9a] hover:bg-[#00df9a] text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
-          Sign In
-        </button>
-        <button className="bg-transparent border border-[#00df9a] hover:bg-[#00df9a] hover:text-white text-[#00df9a] font-semibold py-2 px-4 rounded-lg transition duration-300">
-          Sign Up
-        </button>
-      </div>
-      <div>
-        <AiOutlineMenu className="text-3xl" />
+    
+      <div onClick={handleNav} className="block md:hidden">
+        {!navOpen ? <AiOutlineClose className="text-3xl"/> : <AiOutlineMenu className="text-3xl"/>}
       </div>
 
-      <div className="fixed hidden left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300]">
+      <div className={!navOpen ? "fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500" : "fixed left-[-100%]"}>
         <h1 className="w-full text-center text-3xl font-bold text-[#00df9a] m-4">
-          Umusaare
+          Umusaare.
         </h1>
         <div className="flex flex-col items-center justify-center uppercase">
           <Link to="/about" className="p-4 border-b border-gray-600">
