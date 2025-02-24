@@ -1,29 +1,31 @@
+
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { fetchUsersByEmail } from "./../services/api";
+import { fetchUsersByEmail } from "../services/api";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 //import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import { useQuery } from "@tanstack/react-query";
 
 interface User {
+  id: {
+    value:string;
+  };
   name: {
     first: string;
     last: string;
   };
   email: string;
-  phone: string;
-  DOB: string;
   picture: {
     large: string;
-  };
+  }; 
 }
 
 const UserDetail = () => {
   const { email } = useParams<{ email: string }>();
 
-  const { data, isLoading, isError, error } = useQuery<User, Error>({
+  const { data: user, isLoading, isError, error } = useQuery<User, Error>({
     queryKey: ["user", email],
     queryFn: () => {
       if (!email) throw new Error("Email is required");
@@ -31,10 +33,12 @@ const UserDetail = () => {
     },
   });
 
-  const user = data || null;
-
   if (isLoading) {
-    return <div className="text-center font-bold">Loading...</div>;
+    return (
+      <div className="text-white text-center font-bold">
+        Hold on while we retrieve the data...
+      </div>
+    );
   }
 
   if (isError) {
@@ -52,13 +56,13 @@ const UserDetail = () => {
           {/* <CardMedia
             component="img"
             height="140"
-            image={user.picture.large}
+            image={user?.picture?.large}
             alt="green iguana"
           /> */}
           <CardContent>
             {/* <Typography gutterBottom variant="h5" component="div">
-                  {user.name.first} {user.name.last}
-                </Typography> */}
+              {user?.name.first} {user?.name.last}
+            </Typography> */}
             <Typography variant="body2" sx={{ color: "text.secondary" }}>
               Lizards are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica

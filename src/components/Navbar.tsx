@@ -14,13 +14,13 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-8 text-white">
       <div>
-        <Link to="/" className="w-full text-3xl font-bold text-[#00df9a]">
+        <Link to="/home" className="w-full text-3xl font-bold text-[#00df9a]">
           Umusaare
         </Link>
       </div>
 
       {/* Navigation Links */}
-      <div className="flex hidden">
+      <div className="flex">
         <Link to="/about" className="p-4">
           About
         </Link>

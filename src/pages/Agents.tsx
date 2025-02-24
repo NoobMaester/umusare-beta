@@ -1,6 +1,6 @@
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchUsers } from "./../services/api";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { fetchUsers, fetchUsersByEmail } from "./../services/api";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -15,6 +15,8 @@ interface User {
   name: {
     first: string;
     last: string;
+    title:
+    string;
   };
   email: string;
   picture: {
@@ -22,12 +24,20 @@ interface User {
   }; 
 }
 
-const UserList = () => {
+const Agents = () => {
+  const queryClient = useQueryClient();
   
   const {data, isLoading, error} = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
   })
+
+  const prefetchUser = (email: string) => {
+    queryClient.prefetchQuery({
+      queryKey: ["user", email],
+      queryFn: () => fetchUsersByEmail(email),
+    });
+  }
 
   const users = data?.results || [];
 
@@ -41,7 +51,7 @@ const UserList = () => {
       </h2>
       <ul className="flex flex-wrap justify-center items-center gap-4">
         {users.map((user: User) => (
-          <Link to ={`/agents/${user.id.value}`} key={user.id.value}>
+          <Link to ={`/agents/${user.email}`} onMouseEnter={() => prefetchUser(user.email)} key={user.email}>
               <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
                 <CardMedia
@@ -52,7 +62,7 @@ const UserList = () => {
                 />
                 <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {user.name.first} {user.name.last}
+                  {user.name.title} {user.name.first} {user.name.last}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
                   Lizards are a widespread group of squamate reptiles, with over
@@ -68,4 +78,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default Agents;

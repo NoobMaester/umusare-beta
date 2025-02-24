@@ -1,7 +1,7 @@
 
-import UserDetail from '../components/User';
+import UserDetail from '../components/UserDetail';
 
-const UserDetailPage = () => {
+const Agents = () => {
   return (
     <div>
       <UserDetail />
@@ -9,4 +9,4 @@ const UserDetailPage = () => {
   );
 };
 
-export default UserDetailPage;
+export default Agents;

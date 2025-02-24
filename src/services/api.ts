@@ -9,8 +9,8 @@ export const fetchUsers = async () => {
   return response.json();
 };
 
-export const fetchUsersByEmail = async (id: string) => {
-  const response = await fetch(`${API_URL}/?userId=${id}`);
+export const fetchUsersByEmail = async (email: string) => {
+  const response = await fetch(`${API_URL}/?email=${email}`);
   if (!response.ok) {
     throw new Error('Failed to fetch users');
   }
