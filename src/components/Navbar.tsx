@@ -12,7 +12,7 @@ const Navbar = () => {
   //     : `${baseClasses} text-gray-700 hover:text-blue-600`;
   //};
 
-  const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(true);
   
   const handleNav = () => {
     setNavOpen(!navOpen);
@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-8 text-white">
       <div>
-        <Link to="/home" className="w-full text-3xl font-bold text-[#00df9a]">
+        <Link to="/" className="w-full text-3xl font-bold text-[#00df9a]">
           Umusaare.
         </Link>
       </div>
@@ -39,8 +39,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Buttons */}
-    
+      {/* Mobile Navigation */}
       <div onClick={handleNav} className="block md:hidden">
         {!navOpen ? <AiOutlineClose className="text-3xl"/> : <AiOutlineMenu className="text-3xl"/>}
       </div>
