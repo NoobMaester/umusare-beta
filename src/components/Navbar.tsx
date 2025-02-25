@@ -37,7 +37,10 @@ const Navbar = () => {
         <Link to="/agents" className="p-4">
           Agents
         </Link>
+        <button className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>Get Started</button>
       </div>
+
+      
 
       {/* Mobile Navigation */}
       <div onClick={handleNav} className="block md:hidden">
@@ -58,6 +61,7 @@ const Navbar = () => {
           <Link to="/agents" className="p-4">
             Agents
           </Link>
+          <button className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>Get Started</button>
         </div>
       </div>
     </div>

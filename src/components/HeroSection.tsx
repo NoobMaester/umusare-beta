@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
                     <span className='md:text-5xl sm:text-3xl text-xl font-bold pl-2' ref={typedRef}></span>
                 </div>
 
-                <p className='md:text-2xl text-xl font-bold text-gray-500 text-center'>Monitor your data analytics to increase revenue for BTB, BTC & SASS platforms.</p>
+                <p className='md:text-2xl text-xl mx-4 font-bold text-gray-500 text-center'>Monitor your data analytics to increase revenue for BTB, BTC & SASS platforms.</p>
 
                 <button className='bg-[#00df9a] text-black px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c]'>Get Started</button>
             </div>

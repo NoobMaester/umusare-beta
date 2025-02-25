@@ -8,6 +8,8 @@ import Agents from './pages/Agents';
 //import Home from './pages/Home';
 import Agent from "./pages/Agent";
 import HeroSection from "./components/HeroSection";
+import Analytics from "./components/Analytics";
+import Cards from "./components/Cards";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         </Routes>
       </Router>
       <HeroSection/>
+      <Analytics/>
+      <Cards/>
       <Footer />
     </div>
   );
