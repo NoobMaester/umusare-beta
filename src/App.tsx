@@ -10,6 +10,7 @@ import Agent from "./pages/Agent";
 import HeroSection from "./components/HeroSection";
 import Analytics from "./components/Analytics";
 import Cards from "./components/Cards";
+import UserList from "./components/UserList";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <HeroSection/>
       <Analytics/>
       <Cards/>
+      <UserList/>
       <Footer />
     </div>
   );

@@ -3,6 +3,12 @@ import Typed from 'typed.js';
 import { useEffect, useRef } from 'react';
 
 const HeroSection: React.FC = () => {
+    
+    const handleUsers = () => {
+        console.log('Users');
+        
+    };
+
     const typedRef = useRef(null);
     useEffect(() => {
         const typed = new Typed(typedRef.current, {
@@ -32,7 +38,7 @@ const HeroSection: React.FC = () => {
 
                 <p className='md:text-2xl text-xl mx-4 font-bold text-gray-500 text-center'>Monitor your data analytics to increase revenue for BTB, BTC & SASS platforms.</p>
 
-                <button className='bg-[#00df9a] text-black px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c]'>Get Started</button>
+                <button onClick={handleUsers} className='bg-[#00df9a] text-black px-6 py-4 my-8 font-medium rounded-md hover:bg-[#00c48c]'>Get Started</button>
             </div>
         </div>
     );
