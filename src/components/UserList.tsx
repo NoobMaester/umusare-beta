@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fetchUsers } from "./../lib/api";
 //import {Link} from "react-router-dom";
 import profile from "./../assets/profile.png";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 interface User {
   id: number;
@@ -16,11 +17,11 @@ const UserList = React.memo(() => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleClick = (id: number) => {
-    navigate(`/users/${id}`);
-  }
+  // const handleClick = (id: number) => {
+  //   navigate(`/users/${id}`);
+  // };
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -47,26 +48,27 @@ const UserList = React.memo(() => {
 
   return (
     <div className="w-full py-[10rem] px-4 bg-gray-100">
-        <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
+      <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
         {users.map((user) => (
-          <div onClick={()=>handleClick(user.id)} key={user.id}>
-          <div className="w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 ease-in-out">
-            <img
-              className="w-20 mx-auto mt-[-3rem] bg-gray-100 rounded-full"
-              src={profile}
-              alt="profile"
-            />
-            <h2 className="text-2xl font-bold text-center py-4">{user.name}</h2>
-            <p className="text-xl font-medium text-center py-2 border-b">
-              {user.email}
-            </p>
-            <p className="text-xl font-medium text-center py-2 border-b">
-              {user.phone}
-            </p>
-          </div>
-          </div>
-          ))}
-        </div>
+          
+            <Link to={`/users/${user.id}`  } key={user.id} className="w-full cursor-pointer shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 ease-in-out">
+              <img
+                className="w-20 mx-auto mt-[-3rem] bg-gray-100 rounded-full"
+                src={profile}
+                alt="profile"
+              />
+              <h2 className="text-2xl font-bold text-center py-4">
+                {user.name}
+              </h2>
+              <p className="text-xl font-medium text-center py-2 border-b">
+                {user.email}
+              </p>
+              <p className="text-xl font-medium text-center py-2 border-b">
+                {user.phone}
+              </p>
+            </Link>
+        ))}
+      </div>
     </div>
   );
 });

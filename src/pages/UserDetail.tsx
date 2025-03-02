@@ -46,7 +46,7 @@ const UserDetail = () => {
     if (!user) return <p>Product not found</p>;
 
   return (
-    <div>
+    <div className="w-full py-[10rem] text-black px-4 bg-gray-100">
       <h1>{user.name}</h1>
       <p>{user.email}</p>
     </div>
