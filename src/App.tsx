@@ -7,18 +7,23 @@ import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <MainLayout>
-          <HeroSection />
-          <Analytics />
-          <UserList />
-          <Routes>
-            <Route path="/users/:id" element={<UserDetail />} />
-          </Routes>
-        </MainLayout>
-      </Router>
-    </div>
+    <Router>
+      <MainLayout>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroSection />
+                <Analytics />
+                <UserList />
+              </>
+            }
+          />
+          <Route path="/users/:id" element={<UserDetail />} />
+        </Routes>
+      </MainLayout>
+    </Router>
   );
 }
 

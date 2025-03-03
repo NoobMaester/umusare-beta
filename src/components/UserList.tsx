@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { fetchUsers } from "./../lib/api";
-//import {Link} from "react-router-dom";
 import profile from "./../assets/profile.png";
 import { Link } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
@@ -43,7 +42,7 @@ const UserList = React.memo(() => {
     loadUsers();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="text-center text-white">Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (

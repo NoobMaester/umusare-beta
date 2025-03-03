@@ -44,7 +44,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <div onClick={handleNav} className="block md:hidden">
-        {!navOpen ? <AiOutlineClose className="text-3xl"/> : <AiOutlineMenu className="text-3xl"/>}
+        {!navOpen ? <AiOutlineClose className="text-3xl text-[#00df9a]"/> : <AiOutlineMenu className="text-3xl text-[#00df9a]"/>}
       </div>
 
       <div className={!navOpen ? "fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500" : "fixed left-[-100%]"}>
