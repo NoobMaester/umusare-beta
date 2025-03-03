@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
         <div className='text-white'>
             <div className='max-w-[800px] w-full h-screen mx-auto flex flex-col justify-center items-center'>
                 <p className='text-[#00df9a] font-bold p-2 uppercase sm:text-2xl'>Too Many Drinks? We've Got the Wheel.</p>
-                <h1 className='md:text-6xl sm:text-5xl sm:text-center text-4xl font-bold md:py-6'>Because Every Life Matters Get Home Safe.</h1>
+                <h1 className='md:text-5xl text-center text-4xl font-bold md:py-6'>Because Every Life Matters Get Home Safe.</h1>
                 <div className='flex justify-center items-center'>
                     <p className='md:text-5xl sm:text-3xl text-xl font-bold py-4'>Ride</p>
                     <span className='md:text-5xl sm:text-3xl text-xl font-bold pl-2' ref={typedRef}></span>
