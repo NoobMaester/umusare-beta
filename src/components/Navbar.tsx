@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
@@ -28,19 +28,34 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex uppercase">
-        <Link to="/about" className="p-4">
+        <NavLink 
+          to="/about" 
+          className={({ isActive }) => 
+            isActive ? "p-4 text-[#00df9a]" : "p-4 hover:text-[#00df9a]"
+          }
+        >
           About
-        </Link>
-        <Link to="/services" className="p-4">
+        </NavLink>
+        <NavLink 
+          to="/services" 
+          className={({ isActive }) => 
+            isActive ? "p-4 text-[#00df9a]" : "p-4 hover:text-[#00df9a]"
+          }
+        >
           Services
-        </Link>
-        <Link to="/agents" className="p-4">
+        </NavLink>
+        <NavLink 
+          to="/agents" 
+          className={({ isActive }) => 
+            isActive ? "p-4 text-[#00df9a]" : "p-4 hover:text-[#00df9a]"
+          }
+        >
           Agents
-        </Link>
-        <button className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>Get Started</button>
+        </NavLink>
+        <button className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
+          Get Started
+        </button>
       </div>
-
-      
 
       {/* Mobile Navigation */}
       <div onClick={handleNav} className="block md:hidden">
@@ -52,16 +67,33 @@ const Navbar = () => {
           Umusaare.
         </h1>
         <div className="flex flex-col items-center justify-center uppercase">
-          <Link to="/about" className="p-4 border-b border-gray-600">
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => 
+              isActive ? "p-4 border-b border-gray-600 text-[#00df9a]" : "p-4 border-b border-gray-600 hover:text-[#00df9a]"
+            }
+          >
             About
-          </Link>
-          <Link to="/services" className="p-4 border-b border-gray-600">
+          </NavLink>
+          <NavLink 
+            to="/services" 
+            className={({ isActive }) => 
+              isActive ? "p-4 border-b border-gray-600 text-[#00df9a]" : "p-4 border-b border-gray-600 hover:text-[#00df9a]"
+            }
+          >
             Services
-          </Link>
-          <Link to="/agents" className="p-4">
+          </NavLink>
+          <NavLink 
+            to="/agents" 
+            className={({ isActive }) => 
+              isActive ? "p-4 text-[#00df9a]" : "p-4 hover:text-[#00df9a]"
+            }
+          >
             Agents
-          </Link>
-          <button className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>Get Started</button>
+          </NavLink>
+          <button className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
+            Get Started
+          </button>
         </div>
       </div>
     </div>
