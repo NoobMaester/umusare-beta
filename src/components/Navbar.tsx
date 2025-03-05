@@ -45,12 +45,12 @@ const Navbar = () => {
           Services
         </NavLink>
         <NavLink 
-          to="/agents" 
+          to="/users" 
           className={({ isActive }) => 
             isActive ? "p-4 text-[#00df9a]" : "p-4 hover:text-[#00df9a]"
           }
         >
-          Agents
+          Sailors
         </NavLink>
         <button className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
           Get Started

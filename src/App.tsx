@@ -1,6 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import Analytics from "./components/Analytics";
-import UserList from "./components/UserList";
+//import UserList from "./components/UserList";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserDetail from "./pages/UserDetail";
 import MainLayout from "./layouts/MainLayout";
@@ -16,7 +16,6 @@ function App() {
               <>
                 <HeroSection />
                 <Analytics />
-                <UserList />
               </>
             }
           />

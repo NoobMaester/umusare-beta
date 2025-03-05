@@ -41,7 +41,7 @@ const UserDetail = () => {
         loadUser();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className="text-white">Loading...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!user) return <p>Product not found</p>;
 
