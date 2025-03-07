@@ -4,6 +4,7 @@ import Analytics from "./components/Analytics";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserDetail from "./pages/UserDetail";
 import MainLayout from "./layouts/MainLayout";
+import Sailors from "./pages/Sailors";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             }
           />
           <Route path="/users/:id" element={<UserDetail />} />
+          <Route path="/sailors" element={<Sailors />} /> {/* New Route */}
         </Routes>
       </MainLayout>
     </Router>

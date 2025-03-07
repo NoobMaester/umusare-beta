@@ -11,7 +11,7 @@ interface User {
   phone: string;
 }
 
-const UserList = React.memo(() => {
+const Sailors = React.memo(() => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -46,30 +46,42 @@ const UserList = React.memo(() => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="w-full py-[10rem] px-4 bg-gray-100">
-      <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8">
-        {users.map((user) => (
-          
-            <Link to={`/users/${user.id}`  } key={user.id} className="w-full cursor-pointer shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300 ease-in-out">
+    <div className="w-full bg-gray-900 min-h-screen">
+      {/* Header Section */}
+      <div className="pt-24 pb-12 text-center">
+        <h1 className="text-4xl font-bold text-[#00df9a]">Meet Our Sailors</h1>
+        <p className="mt-4 text-lg text-gray-300">Explore the profiles of our experienced sailors.</p>
+      </div>
+
+      {/* Cards Grid */}
+      <div className="max-w-[1240px] mx-auto px-4 pb-16">
+        <div className="grid md:grid-cols-3 gap-8">
+          {users.map((user) => (
+            <Link 
+              to={`/users/${user.id}`} 
+              key={user.id} 
+              className="bg-white rounded-lg shadow-xl flex flex-col p-4 my-4 hover:scale-105 duration-300 ease-in-out relative"
+            >
               <img
-                className="w-20 mx-auto mt-[-3rem] bg-gray-100 rounded-full"
+                className="w-20 h-20 mx-auto -mt-10 rounded-full border-4 border-white"
                 src={profile}
-                alt="profile"
+                alt={`${user.name}'s profile`}
               />
-              <h2 className="text-2xl font-bold text-center py-4">
+              <h2 className="text-2xl font-bold text-center py-4 text-gray-800">
                 {user.name}
               </h2>
-              <p className="text-xl font-medium text-center py-2 border-b">
+              <p className="text-gray-600 text-center py-2 border-b">
                 {user.email}
               </p>
-              <p className="text-xl font-medium text-center py-2 border-b">
+              <p className="text-gray-600 text-center py-2">
                 {user.phone}
               </p>
             </Link>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 });
 
-export default UserList;
+export default Sailors;
