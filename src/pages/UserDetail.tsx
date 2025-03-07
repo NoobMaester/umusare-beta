@@ -41,7 +41,7 @@ const UserDetail = () => {
         loadUser();
     }, [id]);
 
-    if (loading) return <p className="text-white">Loading...</p>;
+    if (loading) return <p className="text-center text-2xl py-4 text-[#00df9a]">Loading...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!user) return <p>Product not found</p>;
 
