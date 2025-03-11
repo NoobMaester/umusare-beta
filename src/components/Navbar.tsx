@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
-  // const location = useLocation();
-
-  // const getLinkClassName = (path: string) => {
-  //   const baseClasses = "transition duration-300";
-  //   return location.pathname === path
-  //     ? `${baseClasses} text-blue-600 font-semibold`
-  //     : `${baseClasses} text-gray-700 hover:text-blue-600`;
-  //};
 
   const [navOpen, setNavOpen] = useState(true);
+  const navigate = useNavigate();
   
   const handleNav = () => {
     setNavOpen(!navOpen);
+  }
+  const handleGetStarted = () => {
+    navigate('/register');
   }
 
   return (
@@ -52,7 +48,7 @@ const Navbar = () => {
         >
           Sailors
         </NavLink>
-        <button className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
+        <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
           Get Started
         </button>
       </div>
@@ -91,7 +87,7 @@ const Navbar = () => {
           >
             Sailors
           </NavLink>
-          <button className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
+          <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
             Get Started
           </button>
         </div>

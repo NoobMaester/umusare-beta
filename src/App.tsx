@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserDetail from "./pages/UserDetail";
 import MainLayout from "./layouts/MainLayout";
 import Sailors from "./pages/Sailors";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
             }
           />
           <Route path="/users/:id" element={<UserDetail />} />
-          <Route path="/sailors" element={<Sailors />} /> {/* New Route */}
+          <Route path="/sailors" element={<Sailors />} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
       </MainLayout>
     </Router>

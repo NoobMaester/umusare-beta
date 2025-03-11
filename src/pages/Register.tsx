@@ -2,9 +2,9 @@ import React from 'react';
 
 const Register: React.FC = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex items-center justify-center bg-gray-900">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-                <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center text-[#00df9a]">Register</h2>
                 <form>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
@@ -41,7 +41,7 @@ const Register: React.FC = () => {
                     </div>
                     <div className="flex items-center justify-between">
                         <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-[#00df9a] hover:bg-[#00c48c] text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                             type="button"
                         >
                             Register
