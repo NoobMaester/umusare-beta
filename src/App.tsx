@@ -1,6 +1,5 @@
 import HeroSection from "./components/HeroSection";
-import Analytics from "./components/Analytics";
-//import UserList from "./components/UserList";
+import AboutUs from "./components/AboutUs";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserDetail from "./pages/UserDetail";
 import MainLayout from "./layouts/MainLayout";
@@ -17,7 +16,7 @@ function App() {
             element={
               <>
                 <HeroSection />
-                <Analytics />
+                <AboutUs />
               </>
             }
           />

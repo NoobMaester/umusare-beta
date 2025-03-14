@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { fetchUsers } from "../lib/api";
 import profile from "./../assets/profile.png";
 import { Link } from "react-router-dom";
-//import { useNavigate } from "react-router-dom";
 
 interface User {
   id: number;
@@ -16,11 +15,6 @@ const Sailors = React.memo(() => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // const navigate = useNavigate();
-
-  // const handleClick = (id: number) => {
-  //   navigate(`/users/${id}`);
-  // };
 
   useEffect(() => {
     const loadUsers = async () => {

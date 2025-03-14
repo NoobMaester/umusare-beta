@@ -1,9 +1,18 @@
 import driver from './../assets/driver1.png';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
-const Analytics = () => {
+const AboutUs = () => {
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/sailors');
+    }
+
+
     return (
         <motion.div 
+        id='about'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -30,7 +39,7 @@ const Analytics = () => {
                         transition={{ delay: 0.6 }}
                         className="uppercase text-[#00df9a] font-bold sm:text-center"
                     >
-                        Data analytics dashboard
+                        Driven by Excellence, Delivered with Care.
                     </motion.p>
                     <motion.h1 
                         initial={{ y: 20, opacity: 0 }}
@@ -38,16 +47,17 @@ const Analytics = () => {
                         transition={{ delay: 0.7 }}
                         className="md:text-4xl sm:text-3xl sm:text-center text-2xl font-bold py-2"
                     >
-                        Manage Data Analytics Centrally
+                        Smooth Rides, Every Time.
                     </motion.h1>
                     <motion.p
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.8 }}
                     >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum assumenda quo doloribus dolorum illum, excepturi animi porro voluptate deleniti totam vitae, laudantium voluptatibus sint possimus ex blanditiis dolores pariatur inventore.
+                        Umusare is your trusted partner for freelance driving services. We connect you with experienced, professional drivers who are ready to take you wherever you need to go. With a focus on safety, reliability, and customer satisfaction, we make transportation simple and stress-free. Your journey, our commitment.
                     </motion.p>
                     <motion.button 
+                        onClick={handleGetStarted}
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         whileHover={{ scale: 1.05 }}
@@ -63,4 +73,4 @@ const Analytics = () => {
     );
 }
 
-export default Analytics;
+export default AboutUs;

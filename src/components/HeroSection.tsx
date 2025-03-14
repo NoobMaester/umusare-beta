@@ -2,13 +2,14 @@ import React from 'react';
 import Typed from 'typed.js';
 import { useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
     
-    const handleUsers = () => {
-        console.log('Users');
-        
-    };
+    const navigate = useNavigate();
+    const handleGetStarted = () => {
+        navigate('/sailors');
+    }
 
     const typedRef = useRef(null);
     useEffect(() => {
@@ -79,7 +80,7 @@ const HeroSection: React.FC = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ delay: 1 }}
-                    onClick={handleUsers} 
+                    onClick={handleGetStarted} 
                     className='bg-[#00df9a] text-black px-6 py-4 my-8 font-medium rounded-md hover:bg-[#00c48c]'
                 >
                     Get Started
