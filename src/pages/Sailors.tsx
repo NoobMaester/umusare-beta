@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchUsers } from "../lib/api";
 import profile from "./../assets/profile.png";
 import { Link } from "react-router-dom";
+import {Card} from "flowbite-react"
 
 interface User {
   id: number;
@@ -56,20 +57,18 @@ const Sailors = React.memo(() => {
               key={user.id} 
               className="bg-white rounded-lg shadow-xl flex flex-col p-4 my-4 hover:scale-105 duration-300 ease-in-out relative"
             >
-              <img
-                className="w-20 h-20 mx-auto -mt-10 rounded-full border-4 border-white"
-                src={profile}
-                alt={`${user.name}'s profile`}
-              />
+              <Card className="max-w-sm" imgAlt="profile" imgSrc={profile} >
+              
               <h2 className="text-2xl font-bold text-center py-4 text-gray-800">
                 {user.name}
               </h2>
-              <p className="text-gray-600 text-center py-2 border-b">
+              <p className="text-gray-600 text-center py-2 border-b md:text-sm">
                 {user.email}
               </p>
               <p className="text-gray-600 text-center py-2">
                 {user.phone}
               </p>
+              </Card>
             </Link>
           ))}
         </div>
