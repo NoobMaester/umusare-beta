@@ -63,13 +63,13 @@ const AboutUs = () => {
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col justify-center items-center"
         >
           <motion.p
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.11 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
             className="uppercase text-[#00df9a] font-bold sm:text-center"
           >
             Driven by Excellence, Delivered with Care.
@@ -77,7 +77,7 @@ const AboutUs = () => {
           <motion.h1
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.13 }}
+            transition={{ duration: 0.5, delay: 0.10 }}
             className="md:text-4xl sm:text-3xl sm:text-center text-2xl font-bold py-2"
           >
             Smooth Rides, Every Time.
@@ -85,7 +85,7 @@ const AboutUs = () => {
           <motion.p
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.11 }}
             className="text-gray-600 text-base md:text-lg leading-relaxed md:leading-loose max-w-2xl text-center md:text-left my-4"
           >
             Umusare is your trusted partner for freelance driving services. We
@@ -100,7 +100,7 @@ const AboutUs = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.5, delay: 0.17 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
             className="text-[#00df9a] bg-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0 hover:text-black"
           >
             Book a Ride
