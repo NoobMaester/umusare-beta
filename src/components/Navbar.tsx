@@ -73,7 +73,7 @@ const Navbar = () => {
           Sailors
         </NavLink>
         <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
-          Join Us
+          Join as a Driver
         </button>
       </div>
 

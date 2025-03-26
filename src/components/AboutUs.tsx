@@ -21,19 +21,34 @@ const AboutUs = () => {
     >
       <h1 className="text-4xl font-bold text-center">How it Works</h1>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center text-xl md:text-2xl lg:text-3xl text-center gap-4 my-8">
-        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center text-xl md:text-2xl text-center gap-4 my-8">
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50 hover:shadow-lg"
+        >
           <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={location} alt="location" />
           <p>Enter Your Location</p>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+        </motion.div>
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50 hover:shadow-lg"
+        >
           <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={car} alt="driver" />
           <p>Get Matched With a Driver</p>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+        </motion.div>
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50 hover:shadow-lg"
+        >
           <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={house} alt="Home" />
           <p>Arrive Home Safe</p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 px-4">
