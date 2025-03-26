@@ -53,39 +53,39 @@ const AboutUs = () => {
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 px-4">
         <motion.img
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="w-full max-w-[500px] mx-auto my-4"
           src={driver}
           alt="driver"
         />
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
           className="flex flex-col justify-center items-center"
         >
           <motion.p
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            //transition={{ delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.11 }}
             className="uppercase text-[#00df9a] font-bold sm:text-center"
           >
             Driven by Excellence, Delivered with Care.
           </motion.p>
           <motion.h1
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            //transition={{ delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.13 }}
             className="md:text-4xl sm:text-3xl sm:text-center text-2xl font-bold py-2"
           >
             Smooth Rides, Every Time.
           </motion.h1>
           <motion.p
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            //transition={{ delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="text-gray-600 text-base md:text-lg leading-relaxed md:leading-loose max-w-2xl text-center md:text-left my-4"
           >
             Umusare is your trusted partner for freelance driving services. We
@@ -100,10 +100,10 @@ const AboutUs = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            //transition={{ delay: 0.9 }}
+            transition={{ duration: 0.5, delay: 0.17 }}
             className="text-[#00df9a] bg-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0 hover:text-black"
           >
-            Get Started
+            Book a Ride
           </motion.button>
         </motion.div>
       </div>
