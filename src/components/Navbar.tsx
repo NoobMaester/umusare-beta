@@ -53,7 +53,7 @@ const Navbar = () => {
           onClick={() => scrollToSection('#about')}
           className="p-4 hover:text-[#00df9a]"
         >
-          About
+          About Us
         </NavLink>
         
         <NavLink 

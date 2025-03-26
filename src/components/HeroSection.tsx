@@ -49,7 +49,7 @@ const HeroSection: React.FC = () => {
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.4 }}
-                    className='md:text-5xl text-center text-4xl font-bold md:py-6'
+                    className='md:text-4xl text-center text-4xl font-bold md:py-6'
                 >
                     Because Every Life Matters Get Home Safe.
                 </motion.h1>
@@ -83,7 +83,7 @@ const HeroSection: React.FC = () => {
                     onClick={handleGetStarted} 
                     className='bg-[#00df9a] text-black px-6 py-4 my-8 font-medium rounded-md hover:bg-[#00c48c]'
                 >
-                    Get Started
+                    Request a Ride
                 </motion.button>
             </div>
         </motion.div>

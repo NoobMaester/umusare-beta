@@ -1,10 +1,12 @@
 import driver from "./../assets/driver1.png";
+import car from "./../assets/car.svg";
+import house from "./../assets/house.svg";
+import location from "./../assets/location-address.svg";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const AboutUs = () => {
   const navigate = useNavigate();
-
   const handleGetStarted = () => {
     navigate("/sailors");
   };
@@ -17,12 +19,29 @@ const AboutUs = () => {
       transition={{ duration: 0.5 }}
       className="w-full bg-white py-16 px-4"
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-4">
+      <h1 className="text-4xl font-bold text-center">How it Works</h1>
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center text-xl md:text-2xl lg:text-3xl text-center gap-4 my-8">
+        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+          <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={location} alt="location" />
+          <p>Enter Your Location</p>
+        </div>
+        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+          <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={car} alt="driver" />
+          <p>Get Matched With a Driver</p>
+        </div>
+        <div className="flex flex-col md:flex-row items-center justify-center p-4 border border-gray-100 rounded-md shadow-md bg-gray-50">
+          <img className="w-[50px] mb-2 md:mb-0 md:mx-2" src={house} alt="Home" />
+          <p>Arrive Home Safe</p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 px-4">
         <motion.img
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="w-[500px] mx-auto my-4"
+          className="w-full max-w-[500px] mx-auto my-4"
           src={driver}
           alt="driver"
         />
