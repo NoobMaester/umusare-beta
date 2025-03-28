@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const Register: React.FC = () => {
+    const [phone, setPhone] = useState('');
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-900">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -12,9 +16,9 @@ const Register: React.FC = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username"
+                            id="firstname"
                             type="text"
-                            placeholder="Username"
+                            placeholder="First Name"
                         />
                     </div>
                     <div className="mb-4">
@@ -23,9 +27,9 @@ const Register: React.FC = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username"
+                            id="Lastname"
                             type="text"
-                            placeholder="Username"
+                            placeholder="Last Name"
                         />
                     </div>
                     <div className="mb-4">
@@ -40,14 +44,23 @@ const Register: React.FC = () => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
                             Cell Number
                         </label>
-                        <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
-                            type="text"
-                            placeholder="Cell Number"
+                        <PhoneInput
+                            country={'rw'} // Default to Rwanda
+                            value={phone}
+                            onChange={phone => setPhone(phone)}
+                            inputStyle={{
+                                width: '100%',
+                                height: '42px',
+                                fontSize: '16px',
+                                paddingLeft: '48px',
+                            }}
+                            containerStyle={{
+                                width: '100%',
+                            }}
+                            inputClass="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
                     <div className="mb-6">
