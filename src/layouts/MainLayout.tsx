@@ -1,4 +1,4 @@
-//import { Outlet } from "react-router-dom";
+
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -12,7 +12,6 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
       <main>
         {children}
       </main>
-      
       <Footer />
     </div>
   );
