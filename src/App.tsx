@@ -5,6 +5,7 @@ import UserDetail from "./pages/UserDetail";
 import MainLayout from "./layouts/MainLayout";
 import Sailors from "./pages/Sailors";
 import Register from "./pages/Register";
+import { Signup } from "./pages/Signup";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="/users/:id" element={<UserDetail />} />
           <Route path="/sailors" element={<Sailors />} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </MainLayout>
     </Router>

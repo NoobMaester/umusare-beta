@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
     
     const navigate = useNavigate();
     const handleGetStarted = () => {
-        navigate('/sailors');
+        navigate('/signup');
     }
 
     const typedRef = useRef(null);
@@ -83,7 +83,7 @@ const HeroSection: React.FC = () => {
                     onClick={handleGetStarted} 
                     className='bg-[#00df9a] text-black px-6 py-4 my-8 font-medium rounded-md hover:bg-[#00c48c]'
                 >
-                    Request a Ride
+                    Get Started
                 </motion.button>
             </div>
         </motion.div>

@@ -8,7 +8,6 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       <Navbar />
-
       <main>
         {children}
       </main>

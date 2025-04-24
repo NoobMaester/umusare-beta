@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import { InputField } from '../components/InputField';
+import { PrimaryButton } from '../components/PrimaryButton';
+import { LayoutWrapper } from '../components/LayoutWrapper';
+import { Card } from '../components/Card';
+import { useNavigate } from 'react-router-dom';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth } from '../services/firebase'; // Uncomment after Firebase setup
+
+export const Signup: React.FC = () => {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSignup = async () => {
+    if (!email || !password || !fullName) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    try {
+      // Firebase signup logic
+      // await createUserWithEmailAndPassword(auth, email, password);
+      console.log('User created:', { fullName, email });
+      navigate('/home'); // Redirect after signup
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Failed to create account');
+      }
+    }
+  };
+
+  return (
+    <LayoutWrapper>
+      <Card>
+        <h1 className="text-2xl font-bold mb-4">Create an Account</h1>
+
+        <div className="flex flex-col gap-4">
+          <InputField
+            label="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="John Doe"
+          />
+          <InputField
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
+          />
+          <InputField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          <PrimaryButton label="Sign Up" onClick={handleSignup} />
+          <p className="text-sm text-center text-gray-600 mt-2">
+            Already have an account?{' '}
+            <span
+              className="text-[#00df9a] cursor-pointer"
+              onClick={() => navigate('/login')}
+            >
+              Log in
+            </span>
+          </p>
+        </div>
+      </Card>
+    </LayoutWrapper>
+  );
+};
