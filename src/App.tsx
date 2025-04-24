@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import Sailors from "./pages/Sailors";
 import Register from "./pages/Register";
 import { Signup } from "./pages/Signup";
+import { Signin } from "./pages/Signin";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/sailors" element={<Sailors />} />
           <Route path="/register" element={<Register/>} />
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/signin" element={<Signin/>} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </MainLayout>

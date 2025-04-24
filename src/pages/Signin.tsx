@@ -7,25 +7,24 @@ import { useNavigate } from 'react-router-dom';
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../services/firebase'; // Uncomment after Firebase setup
 
-export const Signup: React.FC = () => {
+export const Signin: React.FC = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
 
-  const handleSignup = async () => {
-    if (!email || !password || !fullName) {
+  const handleSignin = async () => {
+    if (!email || !password) {
       setError('Please fill in all fields');
       return;
     }
 
     try {
-      // Firebase signup logic
-      // await createUserWithEmailAndPassword(auth, email, password);
-      console.log('User created:', { fullName, email });
-      navigate('/home'); // Redirect after signup
+      // Firebase signin logic
+      // await signInWithEmailAndPassword(auth, email, password);
+      console.log('User signed in:', { email });
+      navigate('/home'); // Redirect after signin
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -42,12 +41,6 @@ export const Signup: React.FC = () => {
 
         <div className="flex flex-col gap-4">
           <InputField
-            label="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            placeholder="John Doe"
-          />
-          <InputField
             label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -62,14 +55,14 @@ export const Signup: React.FC = () => {
           />
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <PrimaryButton label="Sign Up" onClick={handleSignup} />
+          <PrimaryButton label="Sign Up" onClick={handleSignin} />
           <p className="text-sm text-center text-gray-600 mt-2">
-            Already have an account?{' '}
+            Do not have an account?{' '}
             <span
               className="text-[#00df9a] cursor-pointer"
-              onClick={() => navigate('/signin')}
+              onClick={() => navigate('/signup')}
             >
-              Log in
+              Sign up
             </span>
           </p>
         </div>
