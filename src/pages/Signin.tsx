@@ -4,6 +4,7 @@ import { PrimaryButton } from '../components/PrimaryButton';
 import { LayoutWrapper } from '../components/LayoutWrapper';
 import { Card } from '../components/Card';
 import { useNavigate } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../services/firebase'; // Uncomment after Firebase setup
 
@@ -37,7 +38,7 @@ export const Signin: React.FC = () => {
   return (
     <LayoutWrapper>
       <Card>
-        <h1 className="text-2xl font-bold mb-4">Create an Account</h1>
+        <h1 className="text-2xl text-center font-bold mb-8">Log In</h1>
 
         <div className="flex flex-col gap-4">
           <InputField
@@ -55,7 +56,18 @@ export const Signin: React.FC = () => {
           />
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <PrimaryButton label="Sign Up" onClick={handleSignin} />
+          <PrimaryButton label="Sign In" onClick={handleSignin} />
+          <div className="relative my-2">
+            <hr className="border-t" />
+            <span className="absolute left-1/2 transform -translate-x-1/2 -top-3 bg-white px-2 text-gray-500 text-sm">
+              or
+            </span>
+          </div>
+          <PrimaryButton
+            label="Continue with Google"
+            onClick={() => console.log('Google signup clicked')}
+            icon={<FcGoogle className="text-xl" />}
+          />
           <p className="text-sm text-center text-gray-600 mt-2">
             Do not have an account?{' '}
             <span

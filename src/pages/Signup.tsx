@@ -38,7 +38,7 @@ export const Signup: React.FC = () => {
   return (
     <LayoutWrapper>
       <Card>
-        <h1 className="text-2xl font-bold mb-4">Create an Account</h1>
+        <h1 className="text-2xl text-center font-bold mb-8">Create an Account</h1>
 
         <div className="flex flex-col gap-4">
           <InputField
@@ -63,6 +63,7 @@ export const Signup: React.FC = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <PrimaryButton label="Sign Up" onClick={handleSignup} />
+          
           <p className="text-sm text-center text-gray-600 mt-2">
             Already have an account?{' '}
             <span
