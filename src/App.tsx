@@ -8,6 +8,8 @@ import Register from "./pages/Register";
 import { Signup } from "./pages/Signup";
 import { Signin } from "./pages/Signin";
 import NotFound from "./pages/NotFound";
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/signin" element={<Signin/>} />
+          <Route path="/dashboard" element={<PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>} />
+          
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </MainLayout>

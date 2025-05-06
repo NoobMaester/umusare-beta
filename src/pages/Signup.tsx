@@ -27,7 +27,7 @@ export const Signup: React.FC = () => {
       // Firebase signup logic
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("User created:", { fullName, email });
-      navigate("/home"); // Redirect after signup
+      navigate("/dashboard"); // Redirect after signup
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -41,7 +41,7 @@ export const Signup: React.FC = () => {
       try {
         await signInWithGoogle();
         console.log('User signed in with Google');
-        navigate('/home'); // Redirect after Google signin
+        navigate('/dashboard'); // Redirect after Google signin
       } catch (error) {
         console.error('Error signing in with Google:', error);
         setError('Failed to sign in with Google');

@@ -26,7 +26,7 @@ export const Signin: React.FC = () => {
       // Firebase signin logic
       await signInWithEmailAndPassword(auth, email, password);
       console.log('User signed in:', { email });
-      navigate('/home'); // Redirect after signin
+      navigate('/dashboard'); // Redirect after signin
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -40,7 +40,7 @@ export const Signin: React.FC = () => {
     try {
       await signInWithGoogle();
       console.log('User signed in with Google');
-      navigate('/home'); // Redirect after Google signin
+      navigate('/dashboard'); // Redirect after Google signin
     } catch (error) {
       console.error('Error signing in with Google:', error);
       setError('Failed to sign in with Google');
