@@ -2,10 +2,15 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
 import { FaCar } from "react-icons/fa";
+import { getAuth } from "firebase/auth";
+import MapView from "@/components/MapView";
 
 export default function Dashboard() {
   const auth = useAuth();
   const navigate = useNavigate();
+  const user = getAuth().currentUser;
+  const displayName = user?.displayName;
+  const initials = displayName ? displayName.split(' ').filter(name => name).map(name => name[0]).join('').toUpperCase() : "?";
 
   if (!auth) return null;
 
@@ -18,9 +23,14 @@ export default function Dashboard() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <header className="flex justify-between items-center mb-10 border-b border-gray-700 pb-4">
-          <div>
-            <h1 className="text-3xl font-bold">Hey, {auth.user?.email}</h1>
-            <p className="text-sm text-gray-400">Ready to request a ride?</p>
+          <div className="flex">
+            <div className="w-12 h-12 rounded-full bg-[#00df9a] flex items-center justify-center text-xl font-bold text-white mr-4">
+              {initials}
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold">Hey, {auth.user?.displayName}</h1>
+              <p className="text-sm text-gray-400">Ready to request a ride?</p>
+            </div>
           </div>
           <LogoutButton />
         </header>
@@ -40,6 +50,13 @@ export default function Dashboard() {
         <section className="bg-gray-800 rounded-xl p-6 shadow-md">
           <h2 className="text-xl font-semibold mb-4">Your Ride Requests</h2>
           <p className="text-gray-400">No rides yet.</p>
+        </section>
+
+
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold my-8">Your Current Location</h2>
+          <MapView/>
         </section>
       </div>
     </div>
