@@ -5,8 +5,9 @@ import { LayoutWrapper } from '../components/LayoutWrapper';
 import { Card } from '../components/Card';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
-// import { auth } from '../services/firebase'; // Uncomment after Firebase setup
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithGoogle } from '../lib/auth';
+import { auth } from '../services/firebase'; 
 
 export const Signin: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const Signin: React.FC = () => {
 
     try {
       // Firebase signin logic
-      // await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log('User signed in:', { email });
       navigate('/home'); // Redirect after signin
     } catch (err: unknown) {
@@ -34,6 +35,17 @@ export const Signin: React.FC = () => {
       }
     }
   };
+
+  const handleGoogleSignin = async () => {
+    try {
+      await signInWithGoogle();
+      console.log('User signed in with Google');
+      navigate('/home'); // Redirect after Google signin
+    } catch (error) {
+      console.error('Error signing in with Google:', error);
+      setError('Failed to sign in with Google');
+    }
+  }
 
   return (
     <LayoutWrapper>
@@ -65,7 +77,7 @@ export const Signin: React.FC = () => {
           </div>
           <PrimaryButton
             label="Continue with Google"
-            onClick={() => console.log('Google signup clicked')}
+            onClick={() => handleGoogleSignin()}
             icon={<FcGoogle className="text-xl" />}
           />
           <p className="text-sm text-center text-gray-600 mt-2">
