@@ -15,7 +15,7 @@ export default function Dashboard() {
   if (!auth) return null;
 
   const handleRequestRide = () => {
-    navigate("/request");
+    navigate("/requestride");
   };
 
   return (

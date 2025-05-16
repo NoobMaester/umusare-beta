@@ -10,6 +10,7 @@ import { Signin } from "./pages/Signin";
 import NotFound from "./pages/NotFound";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
+import RequestRide from "./pages/RequestRide";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/signin" element={<Signin/>} />
+          <Route path="/requestride" element={<RequestRide/>}></Route>
           <Route path="/dashboard" element={<PrivateRoute>
             <Dashboard />
           </PrivateRoute>} />
