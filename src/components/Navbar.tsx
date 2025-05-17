@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const handleGetStarted = () => {
     setNavOpen(true); // Close menu
-    navigate('/register');
+    navigate('/');
   }
 
   return (
@@ -73,7 +73,7 @@ const Navbar = () => {
           Sailors
         </NavLink>
         <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
-          Join as a Driver
+          Get In Touch
         </button>
       </div>
 
@@ -113,7 +113,7 @@ const Navbar = () => {
             Sailors
           </NavLink>
           <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
-            Join Us
+            Get In Touch
           </button>
         </div>
       </div>

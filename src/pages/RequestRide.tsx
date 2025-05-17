@@ -38,46 +38,48 @@ export default function RequestRide() {
   };
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6 text-white">Request a Ride</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Pickup Location"
-          value={pickup}
-          onChange={(e) => setPickup(e.target.value)}
-          className="input"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Drop-off Location"
-          value={dropoff}
-          onChange={(e) => setDropoff(e.target.value)}
-          className="input"
-          required
-        />
-        <input
-          type="datetime-local"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="input"
-          required
-        />
-        <textarea
-          placeholder="Special Instructions (Optional)"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          className="input"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="btn-primary w-full"
-        >
-          {loading ? "Submitting..." : "Submit Ride Request"}
-        </button>
-      </form>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4">
+      <div className="max-w-lg mx-auto py-10 px-4">
+        <h2 className="text-2xl font-bold mb-6 text-white">Request a Ride</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Pickup Location"
+            value={pickup}
+            onChange={(e) => setPickup(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Drop-off Location"
+            value={dropoff}
+            onChange={(e) => setDropoff(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
+            required
+          />
+          <input
+            type="datetime-local"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
+            required
+          />
+          <textarea
+            placeholder="Special Instructions (Optional)"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex items-center justify-center gap-2 w-full bg-[#00df9a] hover:bg-black transition-colors text-white font-semibold text-lg py-3 rounded-xl shadow-lg"
+          >
+            {loading ? "Submitting..." : "Submit Ride Request"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

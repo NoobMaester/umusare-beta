@@ -48,7 +48,7 @@ export const Signup: React.FC = () => {
       }
     }
 
-  return (
+  return ( 
     <LayoutWrapper>
       <Card>
         <h1 className="text-2xl text-center font-bold mb-8">
