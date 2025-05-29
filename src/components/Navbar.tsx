@@ -53,7 +53,7 @@ const Navbar = () => {
           onClick={() => scrollToSection('#about')}
           className="p-4 hover:text-[#00df9a]"
         >
-          About Us
+          About Umusare
         </NavLink>
         
         <NavLink 
@@ -92,7 +92,7 @@ const Navbar = () => {
             onClick={() => handleNavClick('#about')}
             className="p-4 border-b border-gray-600 hover:text-[#00df9a] w-full text-center"
           >
-            About Us
+            About Umusare
           </button>
           <NavLink 
             to="/services" 
