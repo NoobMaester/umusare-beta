@@ -33,11 +33,6 @@ const Navbar = () => {
     setNavOpen(true);
   }
 
-  const handleGetStarted = () => {
-    setNavOpen(true); // Close menu
-    navigate('/');
-  }
-
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-8 text-white">
       <div>
@@ -72,9 +67,6 @@ const Navbar = () => {
         >
           Sailors
         </NavLink>
-        <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
-          Get In Touch
-        </button>
       </div>
 
 
@@ -112,9 +104,6 @@ const Navbar = () => {
           >
             Sailors
           </NavLink>
-          <button onClick={handleGetStarted} className='bg-[#00df9a] text-black w-[200px] px-6 py-4 mt-8 font-medium rounded-md hover:bg-[#00c48c] mx-auto md:mx-0'>
-            Get In Touch
-          </button>
         </div>
       </div>
     </div>

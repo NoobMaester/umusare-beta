@@ -3,12 +3,18 @@ import Typed from 'typed.js';
 import { useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const HeroSection: React.FC = () => {
-    
     const navigate = useNavigate();
+    const { user } = useAuth();
+    
     const handleGetStarted = () => {
-        navigate('/signup');
+        if (!user) {
+            navigate('/signup');
+        } else {
+            navigate('/dashboard');
+        }
     }
 
     const typedRef = useRef(null);
@@ -79,7 +85,7 @@ const HeroSection: React.FC = () => {
                     animate={{ scale: 1, opacity: 1 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ delay: 1 }}
+                    transition={{ delay: 0.1 }}
                     onClick={handleGetStarted} 
                     className='bg-[#00df9a] text-black px-6 py-4 my-8 font-medium rounded-md hover:bg-[#00c48c]'
                 >
