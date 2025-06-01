@@ -8,19 +8,19 @@ const containerStyle = {
   borderRadius: "1rem",
 };
 
-const defaultCenter = {
-  lat: 37.7749,
-  lng: -122.4194, // San Francisco as a fallback
-};
+// const defaultCenter = {
+//   lat: 37.7749,
+//   lng: -122.4194, // San Francisco as a fallback
+// };
 
 const MapView = () => {
-    const [center, setCenter] = useState(defaultCenter);
+    const [position, setPosition] = useState<google.maps.LatLngLiteral | null>(null)
 
     useEffect(()=> {
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(
                 (position)=> {
-                    setCenter({
+                    setPosition({
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     });
@@ -35,9 +35,9 @@ const MapView = () => {
     }, [])
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14}>
-        <Marker position={center} />
-      </GoogleMap>
+      {position && (<GoogleMap mapContainerStyle={containerStyle} center={position} zoom={14}>
+        <Marker position={position} />
+      </GoogleMap>)}
     </LoadScript>
   );
 };
