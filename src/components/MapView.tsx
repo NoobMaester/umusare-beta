@@ -8,10 +8,6 @@ const containerStyle = {
   borderRadius: "1rem",
 };
 
-// const defaultCenter = {
-//   lat: 37.7749,
-//   lng: -122.4194, // San Francisco as a fallback
-// };
 
 const MapView = () => {
     const [position, setPosition] = useState<google.maps.LatLngLiteral | null>(null)

@@ -1,8 +1,10 @@
+// pages/RequestRide.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { FaCar } from "react-icons/fa";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
-import { useAuth } from "../context/AuthContext";
 
 export default function RequestRide() {
   const { user } = useAuth();
@@ -31,50 +33,77 @@ export default function RequestRide() {
       });
       navigate("/dashboard");
     } catch (err) {
-      console.error("Error submitting ride request:", err);
+      console.error("Ride request failed:", err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4">
-      <div className="max-w-lg mx-auto py-10 px-4">
-        <h2 className="text-2xl font-bold mb-6 text-white">Request a Ride</h2>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-4 py-8">
+      <div className="max-w-lg mx-auto bg-gray-800 p-6 rounded-xl shadow-md">
+        <div className="flex items-center justify-center mb-6">
+          <FaCar className="text-4xl mx-2" />
+          <h2 className="text-3xl font-bold">Request a Ride</h2>
+        </div>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Pickup Location"
-            value={pickup}
-            onChange={(e) => setPickup(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Drop-off Location"
-            value={dropoff}
-            onChange={(e) => setDropoff(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
-            required
-          />
-          <input
-            type="datetime-local"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
-            required
-          />
-          <textarea
-            placeholder="Special Instructions (Optional)"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00df9a]"
-          />
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Pickup Location
+            </label>
+            <input
+              type="text"
+              value={pickup}
+              onChange={(e) => setPickup(e.target.value)}
+              placeholder="Enter pickup location"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Drop-off Location
+            </label>
+            <input
+              type="text"
+              value={dropoff}
+              onChange={(e) => setDropoff(e.target.value)}
+              placeholder="Enter drop-off location"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Pickup Time
+            </label>
+            <input
+              type="datetime-local"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">
+              Special Instructions
+            </label>
+            <textarea
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Optional notes for your driver"
+              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg resize-none h-24 focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
+            />
+          </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center justify-center gap-2 w-full bg-[#00df9a] hover:bg-black transition-colors text-white font-semibold text-lg py-3 rounded-xl shadow-lg"
+            className="w-full bg-[#00df9a] hover:bg-[#00c48c] transition-colors text-white py-3 rounded-lg font-semibold"
           >
             {loading ? "Submitting..." : "Submit Ride Request"}
           </button>

@@ -29,7 +29,8 @@ export default function Dashboard() {
             </div>
             <div>
               <h1 className="text-3xl font-bold">Hey, {auth.user?.displayName}</h1>
-              <p className="text-sm text-gray-400">Ready to request a ride?</p>
+              <p className="text-sm text-gray-400 font-semibold my-2">Ready to request a ride?</p>
+              <p className="text-sm text-gray-400 font-semibold">Where are you heading today?</p>
             </div>
           </div>
           <LogoutButton />
