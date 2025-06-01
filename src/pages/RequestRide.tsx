@@ -1,20 +1,45 @@
-// pages/RequestRide.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FaCar } from "react-icons/fa";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
+import MapPreview from "@/components/MapPreview";
+import { geocodeAddress } from "@/lib/geocodeAddress";
+
 
 export default function RequestRide() {
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const [pickupAddress, setPickupAddress] = useState<google.maps.LatLngLiteral | null>(null);
+  const [dropoffAddress, setDropoffAddress] = useState<google.maps.LatLngLiteral | null>(null);
 
   const [pickup, setPickup] = useState("");
   const [dropoff, setDropoff] = useState("");
   const [time, setTime] = useState("");
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handlePickupChange = async (value: string) => {
+    setPickup(value);
+    const coords = await geocodeAddress(value);
+    if (coords) {
+      setPickupAddress(coords);
+    } else {
+      console.error("Failed to geocode pickup address");
+    }
+  }
+
+  const handleDropoffChange = async (value: string) => {
+    setDropoff(value);
+    const coords = await geocodeAddress(value);
+    if (coords) {
+      setDropoffAddress(coords);
+    } else {
+      console.error("Failed to geocode drop-off address");
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +71,9 @@ export default function RequestRide() {
           <FaCar className="text-4xl mx-2" />
           <h2 className="text-3xl font-bold">Request a Ride</h2>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <MapPreview pickup = {pickupAddress} dropoff = {dropoffAddress}
+        />
+        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
           <div>
             <label className="block text-sm text-gray-400 mb-1">
               Pickup Location
@@ -54,7 +81,7 @@ export default function RequestRide() {
             <input
               type="text"
               value={pickup}
-              onChange={(e) => setPickup(e.target.value)}
+              onChange={(e) => handlePickupChange(e.target.value)}
               placeholder="Enter pickup location"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
               required
@@ -68,7 +95,7 @@ export default function RequestRide() {
             <input
               type="text"
               value={dropoff}
-              onChange={(e) => setDropoff(e.target.value)}
+              onChange={(e) => handleDropoffChange(e.target.value)}
               placeholder="Enter drop-off location"
               className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00c48c]"
               required
