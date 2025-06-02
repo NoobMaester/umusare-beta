@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 
 interface MapPreviewProps {
   pickup: google.maps.LatLngLiteral | null;
@@ -13,43 +12,62 @@ const containerStyle = {
   borderRadius: "0.75rem",
 };
 
-const GOOGLE_MAPS_LIBRARIES: (
-  | "places"
-  | "drawing"
-  | "geometry"
-  | "localContext"
-  | "visualization"
-)[] = ["places"];
+const defaultCenter = { lat: -1.9441, lng: 30.0619 }; // Kigali, Rwanda
 
 const MapPreview = ({ pickup, dropoff }: MapPreviewProps) => {
   const [currentLocation, setCurrentLocation] = useState<google.maps.LatLngLiteral | null>(null);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setCurrentLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        });
-      },
-      (err) => {
-        console.error("Error getting location:", err);
-      }
-    );
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setCurrentLocation({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          });
+        },
+        (err) => {
+          console.error("Error getting location:", err);
+        }
+      );
+    }
   }, []);
 
-  const mapCenter = currentLocation || pickup || dropoff || { lat: 37.7749, lng: -122.4194 };
+  const mapCenter = pickup || dropoff || currentLocation || defaultCenter;
 
   return (
-    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} libraries={GOOGLE_MAPS_LIBRARIES}>
-      <GoogleMap mapContainerStyle={containerStyle} center={mapCenter} zoom={13}>
-        {currentLocation && (
-          <Marker position={currentLocation} label="You" />
-        )}
-        {pickup && <Marker position={pickup} label="P" />}
-        {dropoff && <Marker position={dropoff} label="D" />}
-      </GoogleMap>
-    </LoadScript>
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={mapCenter}
+      zoom={13}
+      options={{
+        zoomControl: true,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
+      }}
+    >
+      {currentLocation && (
+        <Marker
+          position={currentLocation}
+          title="Your Location"
+        />
+      )}
+      {pickup && (
+        <Marker
+          position={pickup}
+          title="Pickup Location"
+          label="P"
+        />
+      )}
+      {dropoff && (
+        <Marker
+          position={dropoff}
+          title="Drop-off Location"
+          label="D"
+        />
+      )}
+    </GoogleMap>
   );
 };
 

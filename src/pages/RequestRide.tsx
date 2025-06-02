@@ -5,8 +5,11 @@ import { FaCar } from "react-icons/fa";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../services/firebase";
 import MapPreview from "@/components/MapPreview";
-import { Autocomplete } from "@react-google-maps/api";
+import { LoadScript, Autocomplete } from "@react-google-maps/api";
 import { reverseGeocode } from "@/lib/reverseGeocode";
+
+const libraries: ("places")[] = ["places"];
+
 interface LatLngLiteral {
   lat: number;
   lng: number;
@@ -102,15 +105,24 @@ export default function RequestRide() {
   };
 
   return (
-    
+    <LoadScript
+      googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+      libraries={libraries}
+    >
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-4 py-8">
         <div className="max-w-lg mx-auto bg-gray-800 p-6 rounded-xl shadow-md">
           <div className="flex items-center justify-center mb-6">
             <FaCar className="text-4xl mx-2" />
             <h2 className="text-3xl font-bold">Request a Ride</h2>
           </div>
-          <MapPreview pickup={pickupAddress} dropoff={dropoffAddress} />
-          <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+
+          {/* Map Preview */}
+          <div className="mb-6">
+            <MapPreview pickup={pickupAddress} dropoff={dropoffAddress} />
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm text-gray-400 mb-1">
                 Pickup Location
@@ -196,6 +208,6 @@ export default function RequestRide() {
           </form>
         </div>
       </div>
- 
+    </LoadScript>
   );
 }
