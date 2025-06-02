@@ -13,6 +13,14 @@ const containerStyle = {
   borderRadius: "0.75rem",
 };
 
+const GOOGLE_MAPS_LIBRARIES: (
+  | "places"
+  | "drawing"
+  | "geometry"
+  | "localContext"
+  | "visualization"
+)[] = ["places"];
+
 const MapPreview = ({ pickup, dropoff }: MapPreviewProps) => {
   const [currentLocation, setCurrentLocation] = useState<google.maps.LatLngLiteral | null>(null);
 
@@ -33,7 +41,7 @@ const MapPreview = ({ pickup, dropoff }: MapPreviewProps) => {
   const mapCenter = currentLocation || pickup || dropoff || { lat: 37.7749, lng: -122.4194 };
 
   return (
-    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} libraries={GOOGLE_MAPS_LIBRARIES}>
       <GoogleMap mapContainerStyle={containerStyle} center={mapCenter} zoom={13}>
         {currentLocation && (
           <Marker position={currentLocation} label="You" />
