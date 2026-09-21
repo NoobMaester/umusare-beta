@@ -1,121 +1,36 @@
-# Umusare Beta
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern web application built with React, TypeScript, and Vite, featuring a beautiful UI powered by Material-UI and Tailwind CSS.
+## Getting Started
 
-## 🚀 Features
-
-- Modern React with TypeScript
-- Material-UI and Tailwind CSS for styling
-- Google Maps integration
-- Firebase integration
-- React Query for data fetching
-- Responsive design
-- Phone number input support
-- Typed animations
-- Routing with React Router
-
-## 🛠️ Tech Stack
-
-- **Frontend Framework:** React 18
-- **Language:** TypeScript
-- **Build Tool:** Vite
-- **UI Libraries:** 
-  - Material-UI
-  - Tailwind CSS
-  - Flowbite React
-- **State Management:** React Query
-- **Maps:** Google Maps API
-- **Authentication:** Firebase
-- **Styling:** 
-  - Tailwind CSS
-  - Emotion
-  - CSS Modules
-- **Icons:** Material Icons, Lucide React, React Icons
-- **Development Tools:**
-  - ESLint
-  - TypeScript
-  - PostCSS
-  - Autoprefixer
-
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone [repository-url]
-cd umusare-beta
-```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Create a `.env` file in the root directory and add your environment variables:
-```env
-VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-VITE_FIREBASE_CONFIG=your_firebase_config
-```
-
-## 🚀 Development
-
-To start the development server:
+First, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-```
-
-The application will be available at `http://localhost:5173`
-
-## 🏗️ Building for Production
-
-To create a production build:
-
-```bash
-npm run build
 # or
-yarn build
-```
-
-To preview the production build:
-
-```bash
-npm run preview
+pnpm dev
 # or
-yarn preview
+bun dev
 ```
 
-## 📁 Project Structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-src/
-├── assets/        # Static assets
-├── components/    # Reusable components
-├── context/       # React context providers
-├── layouts/       # Layout components
-├── lib/          # Utility functions and configurations
-├── pages/        # Page components
-├── services/     # API and service integrations
-└── App.tsx       # Main application component
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 🧪 Testing
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-To run the linter:
+## Learn More
 
-```bash
-npm run lint
-# or
-yarn lint
-```
+To learn more about Next.js, take a look at the following resources:
 
-## 📝 License
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-This project is private and proprietary.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 👥 Contributing
+## Deploy on Vercel
 
-This is a private project. Please contact the project maintainers for contribution guidelines.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,0 +1,21 @@
+import Navbar from "./components/landing/Navbar";
+import Hero from "./components/landing/Hero";
+import HowItWorks from "./components/landing/HowItWorks";
+import AudienceSection from "./components/landing/Audience";
+import SafetySection from "./components/landing/Safety";
+import FinalCTA from "./components/landing/FinalCTA";
+import Footer from "./components/landing/Footer";
+
+export default function Home() {
+  return (
+    <main>
+      <Navbar />
+      <Hero />
+      <HowItWorks />
+      <AudienceSection />
+      <SafetySection />
+      <FinalCTA />
+      <Footer />
+    </main>
+  );
+}
