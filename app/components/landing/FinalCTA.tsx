@@ -25,7 +25,7 @@ export default function FinalCTA() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/client/register"
+                href="/client/login"
                 className="inline-flex items-center justify-center gap-2 bg-primary-foreground px-6 py-3.5 text-sm font-semibold text-primary transition-opacity hover:opacity-90"
               >
                 I need a driver
@@ -33,7 +33,7 @@ export default function FinalCTA() {
               </Link>
 
               <Link
-                href="/driver/register"
+                href="/driver/login"
                 className="inline-flex items-center justify-center border border-primary-foreground/25 px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
               >
                 Become a driver

@@ -50,14 +50,14 @@ export default function Footer() {
 
               <nav className="mt-5 flex flex-col gap-3">
                 <Link
-                  href="/client/register"
+                  href="/client/login"
                   className="text-sm text-foreground transition-colors hover:text-primary"
                 >
                   Need a driver
                 </Link>
 
                 <Link
-                  href="/driver/register"
+                  href="/driver/login"
                   className="text-sm text-foreground transition-colors hover:text-primary"
                 >
                   Become a driver

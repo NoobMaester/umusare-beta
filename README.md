@@ -1,36 +1,273 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Umusaâre
+
+> **The safe way home.**
+
+Umusaâre is a mobile-first driver-safety platform that connects people who should not or cannot drive with trusted drivers who can safely take them and their vehicle home.
+
+The core idea is simple:
+
+**When you shouldn't drive, don't.**
+
+Your car stays with you. You don't have to drive it.
+
+## Project Status
+
+Early-stage MVP / product build.
+
+The current work focuses on:
+
+- Public landing page
+- Client experience
+- Driver experience
+- Super Admin experience
+- Authentication
+- Driver verification
+- Driver requests and trip lifecycle
+- Payments and reviews
+
+## Product Structure
+
+```text
+/
+├── Client
+│   ├── Registration
+│   ├── Dashboard
+│   ├── Request a driver
+│   ├── Active trip
+│   ├── Trip history
+│   ├── Vehicles
+│   └── Profile
+│
+├── Driver
+│   ├── Registration / application
+│   ├── Verification
+│   ├── Dashboard
+│   ├── Availability
+│   ├── Incoming requests
+│   ├── Active trip
+│   └── Earnings
+│
+└── Super Admin
+    ├── Drivers
+    ├── Clients
+    ├── Requests / trips
+    ├── Payments
+    └── Reviews
+```
+
+## Tech Stack
+
+### Frontend
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Lucide React
+- Manrope
+
+### Backend
+
+- Express
+- TypeScript
+- Prisma
+- PostgreSQL
+
+### Development
+
+- npm
+- Git / GitHub
+- Vercel
+
+## Design Direction
+
+Umusaâre is intentionally designed to avoid the visual language of generic ride-hailing apps and SaaS dashboards.
+
+### Brand principles
+
+- Trustworthy
+- Calm
+- Mature
+- Safety-focused
+- Modern
+- Distinctive
+- Human
+
+### Visual system
+
+The initial interface uses:
+
+- Charcoal / near-black background
+- Warm off-white text
+- Electric lime as the primary accent
+- Flat surfaces
+- Crisp borders
+- Strong typography
+- Minimal animation
+- Generous spacing
+
+Brand colors are defined centrally in `app/globals.css` so the visual system can be changed without hunting through individual components.
+
+### Icons
+
+Umusaâre uses **Lucide React** for interface icons.
+
+No emoji icons, improvised icon shapes, or generic icon substitutions.
+
+## Core Product Flow
+
+### Client
+
+```text
+Register
+   ↓
+Request driver
+   ↓
+Searching
+   ↓
+Driver assigned
+   ↓
+Driver arriving
+   ↓
+Driver arrived
+   ↓
+Trip in progress
+   ↓
+Trip completed
+   ↓
+Payment
+   ↓
+Review
+```
+
+### Driver
+
+```text
+Apply
+   ↓
+Verification pending
+   ↓
+Approved
+   ↓
+Go online
+   ↓
+Receive request
+   ↓
+Accept
+   ↓
+Arrive
+   ↓
+Start trip
+   ↓
+Complete trip
+   ↓
+Earnings
+```
+
+## Request States
+
+```text
+PENDING
+SEARCHING
+ACCEPTED
+DRIVER_ARRIVING
+DRIVER_ARRIVED
+IN_PROGRESS
+COMPLETED
+```
+
+A request can also be cancelled before completion where applicable.
+
+## Payment States
+
+```text
+PENDING
+PAID
+FAILED
+REFUNDED
+```
+
+## MVP Scope
+
+The first version intentionally avoids unnecessary complexity.
+
+### Included
+
+- Client registration and authentication
+- Driver applications
+- Driver approval
+- Driver availability
+- Driver requests
+- Trip lifecycle
+- Vehicle information
+- Payments
+- Reviews
+- Super Admin management
+
+### Not included in the MVP
+
+- Surge pricing
+- AI matching
+- Subscriptions
+- Referral programs
+- Corporate accounts
+- Multiple-city operations
+- Team accounts
+- Advanced analytics
+- Wallet system
+- In-app chat
+- Sophisticated live GPS tracking
+- Automated driver payouts
+- Promo codes
+
+These can be evaluated later based on real product needs.
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository and install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Create a local environment file when backend integration is enabled:
 
-To learn more about Next.js, take a look at the following resources:
+```text
+.env.local
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Environment variables should never be committed to the repository.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Principles
 
-## Deploy on Vercel
+This project is being built as a real product, not as a disposable demo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+That means:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Build the simplest version that solves the actual problem.
+- Prefer clear architecture over unnecessary abstraction.
+- Keep the interface intentional.
+- Don't add features just because they are common in similar apps.
+- Don't copy the visual identity of existing ride-hailing platforms.
+- Keep brand decisions centralized and easy to change.
+- Build mobile-first because the product's primary use case is mobile.
+- Make safety and accountability part of the product itself, not just marketing copy.
+
+## License
+
+This project is currently private and proprietary.
+
+All rights reserved.

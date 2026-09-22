@@ -23,7 +23,7 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/client/register"
+              href="/client/login"
               className="group inline-flex items-center justify-center gap-3 bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
               I Need a Driver
@@ -35,7 +35,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/driver/register"
+              href="/driver/login"
               className="inline-flex items-center justify-center border border-border px-6 py-4 text-sm font-semibold text-foreground transition-colors hover:bg-surface"
             >
               Become a Driver
@@ -49,23 +49,23 @@ export default function Hero() {
         </div>
 
         {/* Visual */}
-        <div className="relative hidden min-h-[560px] items-center justify-center lg:flex">
+        <div className="relative hidden min-h-140 items-center justify-center lg:flex">
           <div className="absolute inset-y-0 right-0 w-px bg-border/70" />
 
           <div className="relative w-full max-w-xl">
             {/* Road */}
-            <div className="absolute left-1/2 top-1/2 h-[520px] w-[230px] -translate-x-1/2 -translate-y-1/2 border-x border-border bg-surface" />
+            <div className="absolute left-1/2 top-1/2 h-140 w-57.5 -translate-x-1/2 -translate-y-1/2 border-x border-border bg-surface" />
 
             {/* Road markings */}
-            <div className="absolute left-1/2 top-1/2 h-[520px] w-px -translate-x-1/2 -translate-y-1/2 border-l border-dashed border-primary/50" />
+            <div className="absolute left-1/2 top-1/2 h-140 w-px -translate-x-1/2 -translate-y-1/2 border-l border-dashed border-primary/50" />
 
             {/* Vehicle */}
-            <div className="relative mx-auto flex h-[250px] w-[390px] items-center justify-center">
-              <div className="absolute h-36 w-[310px] border border-foreground/50 bg-background">
+            <div className="relative mx-auto flex h-62.5 w-97.5 items-center justify-center">
+              <div className="absolute h-36 w-77.5 border border-foreground/50 bg-background">
                 <div className="absolute left-10 right-10 top-8 h-16 border border-border bg-surface" />
 
-                <div className="absolute bottom-[-14px] left-10 h-7 w-7 border-2 border-foreground bg-background" />
-                <div className="absolute bottom-[-14px] right-10 h-7 w-7 border-2 border-foreground bg-background" />
+                <div className="absolute bottom-3.5 left-10 h-7 w-7 border-2 border-foreground bg-background" />
+                <div className="absolute bottom-3.5 right-10 h-7 w-7 border-2 border-foreground bg-background" />
               </div>
 
               <div className="absolute left-1/2 top-4 h-px w-24 -translate-x-1/2 bg-primary" />

@@ -41,15 +41,9 @@ export default function Navbar() {
             For Drivers
           </a>
 
-          <Link
-            href="/login"
-            className="text-sm text-muted transition-colors hover:text-foreground"
-          >
-            Login
-          </Link>
 
           <Link
-            href="/client/register"
+            href="/client/login"
             className="bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             I Need a Driver
