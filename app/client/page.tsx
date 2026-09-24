@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   ArrowRight,
   CarFront,
@@ -11,7 +14,77 @@ import {
   UserRound,
 } from "lucide-react";
 
+interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  role: string;
+}
+
+
 export default function ClientDashboardPage() {
+
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const router = useRouter();
+
+
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        const response = await fetch(
+          "http://localhost:4400/api/auth/me",
+          {
+            credentials: "include",
+          }
+        );
+
+        if (!response.ok) {
+          router.push("/client/login");
+          return;
+        }
+
+        const data = await response.json();
+
+        setUser(data.user);
+      } catch (error) {
+        console.error("Failed to load authenticated user:", error);
+        router.push("/client/login");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadUser();
+  }, [router]);
+
+  async function handleLogout() {
+    try {
+      await fetch("http://localhost:4400/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch (error) {
+      console.error("Logout failed:", error);
+    } finally {
+      router.push("/client/login");
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-background text-foreground">
+        <div className="flex min-h-screen items-center justify-center">
+          <p className="text-sm text-muted">
+            Loading your account...
+          </p>
+        </div>
+      </main>
+    );
+  }
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
@@ -36,10 +109,8 @@ export default function ClientDashboardPage() {
             <button
               type="button"
               aria-label="Log out"
-              className="text-muted transition-colors hover:text-foreground"
-              onClick={() => {
-                // Logout will be connected to the authentication system.
-              }}
+              className="cursor-pointer text-muted transition-colors hover:text-foreground"
+              onClick={handleLogout}
             >
               <LogOut size={19} strokeWidth={1.8} />
             </button>
@@ -52,7 +123,7 @@ export default function ClientDashboardPage() {
         {/* Greeting */}
         <section className="mb-10">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-            Client
+            Good to see you, {user?.firstName}
           </p>
 
           <h1 className="text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">
@@ -170,9 +241,8 @@ function InfoItem({
         </p>
 
         <p
-          className={`mt-1 text-sm font-semibold ${
-            href ? "text-primary" : "text-foreground"
-          }`}
+          className={`mt-1 text-sm font-semibold ${href ? "text-primary" : "text-foreground"
+            }`}
         >
           {value}
         </p>
