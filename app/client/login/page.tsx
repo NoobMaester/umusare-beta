@@ -1,19 +1,54 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
 import { FormEvent, useState } from "react";
+
 
 export default function ClientLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const router = useRouter();
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    // Authentication API will be connected here.
-    console.log({ email, password });
+    setError(error);
+    setIsLoading(!isLoading)
+
+    try{
+      const response = await fetch("http://localhost:4400/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          email,
+          password
+        }),
+      });
+
+      const data = await response.json();
+      
+      
+
+      if(!response.ok){
+        throw new Error(data.message || "Login failed");
+      }
+      router.push("/client");
+    } catch (error){
+      setError(
+        error instanceof Error
+        ? error.message
+        : "Something went wrong. Please try again"
+      )
+    }
   }
 
   return (

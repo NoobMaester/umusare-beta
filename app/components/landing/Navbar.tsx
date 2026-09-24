@@ -35,7 +35,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="#drivers"
+            href="/driver/login"
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
             For Drivers
@@ -101,7 +101,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#drivers"
+              href="/driver/login"
               onClick={closeMenu}
               className="border-b border-border py-4 text-sm text-muted"
             >
@@ -109,15 +109,7 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="/login"
-              onClick={closeMenu}
-              className="border-b border-border py-4 text-sm text-muted"
-            >
-              Login
-            </Link>
-
-            <Link
-              href="/client/register"
+              href="/client/login"
               onClick={closeMenu}
               className="mt-5 bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
             >

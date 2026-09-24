@@ -1,269 +1,192 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Eye, EyeOff, LockKeyhole, Mail, User } from "lucide-react";
-import { FormEvent, useState } from "react";
+import {
+  ArrowRight,
+  CarFront,
+  Clock3,
+  LogOut,
+  MapPin,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
 
-export default function ClientRegisterPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    if (password !== confirmPassword) {
-      return;
-    }
-
-    // Registration API will be connected here.
-    console.log({
-      name,
-      email,
-      password,
-    });
-  }
-
+export default function ClientDashboardPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-6 py-6">
-        {/* Header */}
-        <header className="flex items-center justify-between">
+      {/* Header */}
+      <header className="border-b border-border">
+        <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-5 sm:px-8">
           <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
-          >
-            <ArrowLeft size={17} strokeWidth={1.8} />
-            Back
-          </Link>
-
-          <Link
-            href="/"
-            className="text-sm font-extrabold tracking-[0.16em] text-foreground"
+            href="/client"
+            className="text-sm font-extrabold tracking-[0.16em]"
           >
             UMUSAÂRE
           </Link>
-        </header>
 
-        {/* Main */}
-        <section className="flex flex-1 flex-col justify-center py-12">
-          <div className="mb-9">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-              Create account
-            </p>
-
-            <h1 className="max-w-sm text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-5xl">
-              Let&apos;s get you home safely.
-            </h1>
-
-            <p className="mt-5 max-w-sm text-base leading-7 text-muted">
-              Create your Umusaâre account to request a trusted driver when
-              you shouldn&apos;t drive.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="mb-2 block text-sm font-semibold"
-              >
-                Full name
-              </label>
-
-              <div className="relative">
-                <User
-                  size={18}
-                  strokeWidth={1.8}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
-                />
-
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  placeholder="Your full name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  required
-                  className="h-14 w-full border border-border bg-surface pl-12 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                />
-              </div>
-            </div>
-
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm font-semibold"
-              >
-                Email address
-              </label>
-
-              <div className="relative">
-                <Mail
-                  size={18}
-                  strokeWidth={1.8}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
-                />
-
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  required
-                  className="h-14 w-full border border-border bg-surface pl-12 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                />
-              </div>
-            </div>
-
-            {/* Password */}
-            <div>
-              <label
-                htmlFor="password"
-                className="mb-2 block text-sm font-semibold"
-              >
-                Password
-              </label>
-
-              <div className="relative">
-                <LockKeyhole
-                  size={18}
-                  strokeWidth={1.8}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
-                />
-
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  placeholder="Create a password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  required
-                  minLength={8}
-                  className="h-14 w-full border border-border bg-surface pl-12 pr-12 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((current) => !current)}
-                  aria-label={
-                    showPassword ? "Hide password" : "Show password"
-                  }
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
-                >
-                  {showPassword ? (
-                    <EyeOff size={18} strokeWidth={1.8} />
-                  ) : (
-                    <Eye size={18} strokeWidth={1.8} />
-                  )}
-                </button>
-              </div>
-
-              <p className="mt-2 text-xs text-muted">
-                Use at least 8 characters.
-              </p>
-            </div>
-
-            {/* Confirm password */}
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="mb-2 block text-sm font-semibold"
-              >
-                Confirm password
-              </label>
-
-              <div className="relative">
-                <LockKeyhole
-                  size={18}
-                  strokeWidth={1.8}
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
-                />
-
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  placeholder="Enter your password again"
-                  value={confirmPassword}
-                  onChange={(event) =>
-                    setConfirmPassword(event.target.value)
-                  }
-                  required
-                  minLength={8}
-                  className="h-14 w-full border border-border bg-surface pl-12 pr-12 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                />
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    setShowConfirmPassword((current) => !current)
-                  }
-                  aria-label={
-                    showConfirmPassword
-                      ? "Hide password"
-                      : "Show password"
-                  }
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff size={18} strokeWidth={1.8} />
-                  ) : (
-                    <Eye size={18} strokeWidth={1.8} />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              className="flex h-14 w-full items-center justify-center bg-primary px-6 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90"
+          <nav className="flex items-center gap-5">
+            <Link
+              href="/client/profile"
+              aria-label="Profile"
+              className="text-muted transition-colors hover:text-foreground"
             >
-              Create account
+              <UserRound size={19} strokeWidth={1.8} />
+            </Link>
+
+            <button
+              type="button"
+              aria-label="Log out"
+              className="text-muted transition-colors hover:text-foreground"
+              onClick={() => {
+                // Logout will be connected to the authentication system.
+              }}
+            >
+              <LogOut size={19} strokeWidth={1.8} />
             </button>
+          </nav>
+        </div>
+      </header>
 
-            <p className="text-center text-xs leading-5 text-muted">
-              By creating an account, you agree to use Umusaâre responsibly
-              and provide accurate information.
-            </p>
-          </form>
+      {/* Content */}
+      <div className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
+        {/* Greeting */}
+        <section className="mb-10">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+            Client
+          </p>
 
-          {/* Login */}
-          <div className="mt-8 border-t border-border pt-7 text-center">
-            <p className="text-sm text-muted">
-              Already have an account?{" "}
-              <Link
-                href="/client/login"
-                className="font-bold text-primary hover:underline"
-              >
-                Sign in
-              </Link>
-            </p>
+          <h1 className="text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">
+            Where are you heading?
+          </h1>
+
+          <p className="mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base">
+            When you shouldn&apos;t drive, don&apos;t. Request a trusted driver and
+            bring yourself and your vehicle home safely.
+          </p>
+        </section>
+
+        {/* Main request */}
+        <section className="border border-border bg-surface">
+          <div className="p-6 sm:p-8">
+            <div className="mb-8 flex items-start justify-between gap-6">
+              <div>
+                <p className="text-lg font-bold">Need a driver?</p>
+
+                <p className="mt-2 max-w-md text-sm leading-6 text-muted">
+                  Tell us where you are and where you&apos;re going. We&apos;ll help
+                  match you with an available driver.
+                </p>
+              </div>
+
+              <div className="hidden h-11 w-11 shrink-0 items-center justify-center border border-border sm:flex">
+                <CarFront
+                  size={21}
+                  strokeWidth={1.7}
+                  className="text-primary"
+                />
+              </div>
+            </div>
+
+            <Link
+              href="/client/request"
+              className="group flex min-h-14 w-full items-center justify-between bg-primary px-5 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto sm:min-w-64"
+            >
+              <span>Request a driver</span>
+
+              <ArrowRight
+                size={19}
+                strokeWidth={2}
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </Link>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="pb-2 text-center">
-          <p className="text-xs text-muted">
-            Your car stays with you. You don&apos;t have to drive it.
-          </p>
-        </footer>
+        {/* Quick information */}
+        <section className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-3">
+          <InfoItem
+            icon={<MapPin size={19} strokeWidth={1.8} />}
+            title="Your location"
+            value="Set when requesting"
+          />
+
+          <InfoItem
+            icon={<CarFront size={19} strokeWidth={1.8} />}
+            title="Your vehicle"
+            value="Not added yet"
+            href="/client/profile"
+          />
+
+          <InfoItem
+            icon={<Clock3 size={19} strokeWidth={1.8} />}
+            title="Past trips"
+            value="View your history"
+            href="/client/trips"
+          />
+        </section>
+
+        {/* Safety */}
+        <section className="mt-10 border-t border-border pt-8">
+          <div className="flex items-start gap-4">
+            <ShieldCheck
+              size={21}
+              strokeWidth={1.7}
+              className="mt-0.5 shrink-0 text-primary"
+            />
+
+            <div>
+              <p className="text-sm font-bold">Your safety comes first.</p>
+
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+                Umusaâre drivers are verified before they can accept client
+                requests. Your vehicle stays with you throughout the trip.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
+}
+
+function InfoItem({
+  icon,
+  title,
+  value,
+  href,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href?: string;
+}) {
+  const content = (
+    <div className="flex min-h-28 flex-col justify-between bg-surface p-5">
+      <div className="text-muted">{icon}</div>
+
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+          {title}
+        </p>
+
+        <p
+          className={`mt-1 text-sm font-semibold ${
+            href ? "text-primary" : "text-foreground"
+          }`}
+        >
+          {value}
+        </p>
+      </div>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className="transition-opacity hover:opacity-80">
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
 }
