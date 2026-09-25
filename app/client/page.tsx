@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
+import {motion} from "motion/react"
 
 interface User {
   id: string;
@@ -121,7 +122,10 @@ export default function ClientDashboardPage() {
       {/* Content */}
       <div className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
         {/* Greeting */}
-        <section className="mb-10">
+        <motion.section className="mb-10"
+        initial={{opacity: 0, y:12}}
+        animate={{opacity:1, y:0}}
+        transition={{duration:0.45, ease: "easeOut"}}>
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
             Good to see you, {user?.firstName}
           </p>
@@ -134,10 +138,17 @@ export default function ClientDashboardPage() {
             When you shouldn&apos;t drive, don&apos;t. Request a trusted driver and
             bring yourself and your vehicle home safely.
           </p>
-        </section>
+        </motion.section>
 
         {/* Main request */}
-        <section className="border border-border bg-surface">
+        <motion.section className="border border-border bg-surface"
+        initial={{opacity:0, y:16}}
+        animate={{opacity:1, y:0}}
+        transition={{
+          duration:0.45,
+          delay: 0.08,
+          ease: "easeOut"
+        }}>
           <div className="p-6 sm:p-8">
             <div className="mb-8 flex items-start justify-between gap-6">
               <div>
@@ -171,10 +182,17 @@ export default function ClientDashboardPage() {
               />
             </Link>
           </div>
-        </section>
+        </motion.section>
 
         {/* Quick information */}
-        <section className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-3">
+        <motion.section className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-3"
+        initial={{opacity:0, y:16}}
+        animate={{opacity:1, y:0}}
+        transition={{
+          duration: 0.45,
+          delay: 0.16,
+          ease: "easeOut"
+        }}>
           <InfoItem
             icon={<MapPin size={19} strokeWidth={1.8} />}
             title="Your location"
@@ -194,10 +212,17 @@ export default function ClientDashboardPage() {
             value="View your history"
             href="/client/trips"
           />
-        </section>
+        </motion.section>
 
         {/* Safety */}
-        <section className="mt-10 border-t border-border pt-8">
+        <motion.section className="mt-10 border-t border-border pt-8"
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{
+          duration:0.5,
+          delay:0.24,
+          ease: "easeOut"
+        }}>
           <div className="flex items-start gap-4">
             <ShieldCheck
               size={21}
@@ -214,7 +239,7 @@ export default function ClientDashboardPage() {
               </p>
             </div>
           </div>
-        </section>
+        </motion.section>
       </div>
     </main>
   );
