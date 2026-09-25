@@ -1,31 +1,76 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Eye, EyeOff, LockKeyhole, Mail, User } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, LockKeyhole, Mail, Phone, User } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation"
 
 export default function ClientRegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [name, setName] = useState("");
+  const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
+  const router = useRouter();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      return;
+      setError("Password do not match");
+      return
     }
 
-    // Registration API will be connected here.
-    console.log({
-      name,
-      email,
-      password,
-    });
+    setError("");
+    setIsLoading(true)
+
+    try {
+      const response = await fetch(
+        "http://localhost:4400/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            phone,
+            password,
+          }),
+        }
+      );
+      const data = await response.json();
+
+      console.log("auth response:", {
+        status: response.status,
+        data,
+      })
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+      router.push("/client")
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+      setEmail("");
+      setPassword("");
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -70,10 +115,10 @@ export default function ClientRegisterPage() {
             {/* Name */}
             <div>
               <label
-                htmlFor="name"
+                htmlFor="firstName"
                 className="mb-2 block text-sm font-semibold"
               >
-                Full name
+                First name
               </label>
 
               <div className="relative">
@@ -84,13 +129,41 @@ export default function ClientRegisterPage() {
                 />
 
                 <input
-                  id="name"
-                  name="name"
+                  id="firsName"
+                  name="firstName"
                   type="text"
-                  autoComplete="name"
-                  placeholder="Your full name"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
+                  autoComplete="firstName"
+                  placeholder="Your first name"
+                  value={firstName}
+                  onChange={(event) => setFirstName(event.target.value)}
+                  required
+                  className="h-14 w-full border border-border bg-surface pl-12 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="lastName"
+                className="mb-2 block text-sm font-semibold"
+              >
+                Last name
+              </label>
+
+              <div className="relative">
+                <User
+                  size={18}
+                  strokeWidth={1.8}
+                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
+                />
+
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  autoComplete="lastName"
+                  placeholder="Your last name"
+                  value={lastName}
+                  onChange={(event) => setLastName(event.target.value)}
                   required
                   className="h-14 w-full border border-border bg-surface pl-12 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
                 />
@@ -126,7 +199,35 @@ export default function ClientRegisterPage() {
                 />
               </div>
             </div>
+            {/* Phone */}
+            <div>
+              <label
+                htmlFor="phone"
+                className="mb-2 block text-sm font-semibold"
+              >
+                Phone number
+              </label>
 
+              <div className="relative">
+                <Phone
+                  size={18}
+                  strokeWidth={1.8}
+                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted"
+                />
+
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="phone"
+                  placeholder="+2507000000"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  required
+                  className="h-14 w-full border border-border bg-surface pl-12 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
+                />
+              </div>
+            </div>
             {/* Password */}
             <div>
               <label
@@ -165,9 +266,9 @@ export default function ClientRegisterPage() {
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
                 >
                   {showPassword ? (
-                    <EyeOff size={18} strokeWidth={1.8} />
-                  ) : (
                     <Eye size={18} strokeWidth={1.8} />
+                  ) : (
+                    <EyeOff size={18} strokeWidth={1.8} />
                   )}
                 </button>
               </div>
@@ -221,20 +322,29 @@ export default function ClientRegisterPage() {
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-muted transition-colors hover:text-foreground"
                 >
                   {showConfirmPassword ? (
-                    <EyeOff size={18} strokeWidth={1.8} />
-                  ) : (
                     <Eye size={18} strokeWidth={1.8} />
+                  ) : (
+                    <EyeOff size={18} strokeWidth={1.8} />
                   )}
                 </button>
               </div>
             </div>
 
             {/* Submit */}
+            {error && (
+              <div
+                role="alert"
+                className="border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-danger"
+              >
+                {error}
+              </div>
+            )}
             <button
               type="submit"
-              className="flex h-14 w-full items-center justify-center bg-primary px-6 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90"
+              disabled={isLoading}
+              className="flex h-14 w-full items-center cursor-pointer justify-center bg-primary px-6 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Create account
+              {isLoading ? "Creating account..." : "Create account"}
             </button>
 
             <p className="text-center text-xs leading-5 text-muted">

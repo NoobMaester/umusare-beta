@@ -21,7 +21,7 @@ export default function ClientLoginPage() {
     setError(error);
     setIsLoading(!isLoading)
 
-    try{
+    try {
       const response = await fetch("http://localhost:4400/api/auth/login", {
         method: "POST",
         headers: {
@@ -35,19 +35,25 @@ export default function ClientLoginPage() {
       });
 
       const data = await response.json();
-      
-      
 
-      if(!response.ok){
+
+
+      if (!response.ok) {
         throw new Error(data.message || "Login failed");
       }
+
       router.push("/client");
-    } catch (error){
+
+    } catch (error) {
       setError(
         error instanceof Error
-        ? error.message
-        : "Something went wrong. Please try again"
-      )
+          ? error.message
+          : "Something went wrong. Please try again"
+      );
+
+      setEmail("");
+      setPassword("");
+      setIsLoading(false);
     }
   }
 
@@ -88,6 +94,15 @@ export default function ClientLoginPage() {
               home safely.
             </p>
           </div>
+
+          {error && (
+            <div
+              role="alert"
+              className="mb-4 border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-danger"
+            >
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
@@ -179,7 +194,7 @@ export default function ClientLoginPage() {
               type="submit"
               className="flex h-14 w-full items-center justify-center bg-primary px-6 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Sign in
+              {isLoading ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
