@@ -12,6 +12,8 @@ export default function ClientRegisterPage() {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
+  const [success, setSuccess] = useState("");
+
   const router = useRouter();
 
   const [firstName, setFirstName] = useState("");
@@ -26,11 +28,12 @@ export default function ClientRegisterPage() {
 
     if (password !== confirmPassword) {
       setError("Password do not match");
-      return
+      return;
     }
 
     setError("");
-    setIsLoading(true)
+    setSuccess("");
+    setIsLoading(true);
 
     try {
       const response = await fetch(
@@ -40,7 +43,6 @@ export default function ClientRegisterPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
           body: JSON.stringify({
             firstName,
             lastName,
@@ -50,6 +52,7 @@ export default function ClientRegisterPage() {
           }),
         }
       );
+
       const data = await response.json();
 
       console.log("auth response:", {
@@ -60,15 +63,26 @@ export default function ClientRegisterPage() {
       if (!response.ok) {
         throw new Error(data.message || "Registration failed");
       }
-      router.push("/client")
+
+      setSuccess("Account created seccessfully. Redirecting to sign in...")
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setPassword("");
+      setConfirmPassword("");
+
+      setTimeout(() => {
+        router.push("/client/login");
+      }, 3000);
+
     } catch (error) {
       setError(
         error instanceof Error
           ? error.message
           : "Something went wrong. Please try again."
       );
-      setEmail("");
-      setPassword("");
       setIsLoading(false);
     }
   }
@@ -110,6 +124,7 @@ export default function ClientRegisterPage() {
               you shouldn&apos;t drive.
             </p>
           </div>
+
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name */}
@@ -339,6 +354,17 @@ export default function ClientRegisterPage() {
                 {error}
               </div>
             )}
+
+
+            {success && (
+              <div
+                role="status"
+                className="border border-success/40 bg-success/10 px-4 py-3 text-sm text-success"
+              >
+                {success}
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={isLoading}
